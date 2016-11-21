@@ -11,7 +11,7 @@ using DsSpeeds.Models;
 namespace DsSpeeds.Controllers
 {
     [Authorize]
-    public class ManageController : RavenDbController
+    public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

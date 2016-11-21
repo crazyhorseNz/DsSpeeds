@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DsSpeeds.Controllers
 {
-    public class HomeController : RavenDbController
+    public class HomeController : Controller
     {
         public ActionResult Index()
         {

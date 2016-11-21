@@ -17,7 +17,6 @@ namespace DsSpeeds
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            RavenDbConfig.Initialize();
         }
     }
 }
