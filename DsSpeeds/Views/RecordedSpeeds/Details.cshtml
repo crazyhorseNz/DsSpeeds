@@ -1,0 +1,111 @@
+﻿@model DsSpeeds.Models.RecordedSpeeds.RecordedSpeed
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.SpeedInMilesPerHour MPH by @Model.PilotName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpeedInMilesPerHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpeedInMilesPerHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PilotName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PilotName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WitnessName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WitnessName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVerified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVerified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationPlaceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationPlaceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocationCountryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationCountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportingUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReportingUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VerifyingUserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VerifyingUserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedOn)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

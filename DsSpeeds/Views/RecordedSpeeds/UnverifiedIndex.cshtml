@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DsSpeeds.Models.RecordedSpeeds.RecordedSpeed>
+
+<h2>@ViewBag.Title</h2>
+<p>The following are claimed speeds which have not yet been independently verified. You can verify the speeds below if you meet the following criteria:</p>
+<ul>
+    <li>You witnessed the claimed speed</li>
+    <li>You were not the pilot</li>
+    <li>You were not the person who entered the claim</li>
+</ul>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SpeedInMilesPerHour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PilotName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaneName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationPlaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationCountryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpeedInMilesPerHour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PilotName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaneName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationPlaceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationCountryName)
+        </td>
+        <td>
+            @Html.ActionLink("Verify", "Verify", new { id = item.Id }) |    
+            @Html.ActionLink("Delete", "DeleteUnverified", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
