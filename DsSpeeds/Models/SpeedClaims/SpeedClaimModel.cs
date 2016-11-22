@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
-namespace DsSpeeds.Models.RecordedSpeeds
+namespace DsSpeeds.Models.SpeedClaims
 {
-    public class RecordedSpeed
+    public class SpeedClaimModel
     {
-        public string Id { get; set; }
-
+        public Guid Id { get; set; }
         [Display(Name="Date")]
         public DateTime Date { get; set; }
 
@@ -21,6 +17,7 @@ namespace DsSpeeds.Models.RecordedSpeeds
 
         [Display(Name = "Witness")]
         public string WitnessName { get; set; }
+
 
         [Display(Name = "Verified")]
         public bool IsVerified { get; set; }

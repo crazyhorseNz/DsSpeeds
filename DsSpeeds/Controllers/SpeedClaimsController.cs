@@ -1,40 +1,43 @@
-﻿using DsSpeeds.Models.RecordedSpeeds;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Domain.Events;
+using DsSpeeds.Models.SpeedClaims;
 
 namespace DsSpeeds.Controllers
 {
-    public class RecordedSpeedsController : Controller
+    public class SpeedClaimsController : Controller
     {
-        // GET: RecordedSpeeds
+        // GET: SpeedClaims
         public ActionResult AllVerified()
         {
-            //var all = DocumentSession.Query<RecordedSpeed>()
-            //    .Where(rs => rs.IsVerified)
-            //    .OrderByDescending(rs => rs.SpeedInMilesPerHour)
-            //    .ToList();
-
             ViewBag.Title = "All Verified Speeds";
 
-            //return View("Index", all);
-            return View("Index");
+            using (var session = MartenDocumentStore.Store.LightweightSession())
+            {
+                var all = session.Query<SpeedClaimModel>()
+                    .Where(rs => rs.IsVerified)
+                    .OrderByDescending(rs => rs.SpeedInMilesPerHour)
+                    .ToList();
+
+                return View("Index", all);
+            }
         }
 
-        // GET: RecordedSpeeds
+        // GET: SpeedClaims
         public ActionResult AllUnverified()
         {
-            //var all = DocumentSession.Query<RecordedSpeed>()
-            //    .Where(rs => rs.IsVerified == false)
-            //    .OrderByDescending(rs => rs.SpeedInMilesPerHour)
-            //    .ToList();
-
             ViewBag.Title = "All Unverified Speeds";
 
-            //return View("UnverifiedIndex", all);
-            return View("UnverifiedIndex");
+            using (var session = MartenDocumentStore.Store.LightweightSession())
+            {
+                var all = session.Query<SpeedClaimModel>()
+                    .Where(rs => rs.IsVerified == false)
+                    .OrderByDescending(rs => rs.SpeedInMilesPerHour)
+                    .ToList();
+
+                return View("UnverifiedIndex", all);
+            }
         }
 
         public ActionResult Create()
@@ -44,19 +47,32 @@ namespace DsSpeeds.Controllers
 
         public ActionResult Details(string id)
         {
-            //var recSpeed = DocumentSession.Load<RecordedSpeed>(id);
+            using (var session = MartenDocumentStore.Store.LightweightSession())
+            {
+                var recSpeed = session.Load<SpeedClaimModel>(id);
 
-            //return View("Details", recSpeed);
-            return View("Details");
+                return View("Details", recSpeed);
+            }
+
         }
 
         [HttpPost]
-        public ActionResult Create(RecordedSpeed speed)
+        public ActionResult Create(SpeedClaimModel speed)
         {
-            speed.LastUpdatedBy = User.Identity.Name;
-            speed.LastUpdatedOn = DateTime.Now;
-            speed.ReportingUserName = User.Identity.Name;
-            //DocumentSession.Store(speed);
+            //speed.LastUpdatedBy = User.Identity.Name;
+            //speed.LastUpdatedOn = DateTime.Now;
+            //speed.ReportingUserName = User.Identity.Name;
+            ////DocumentSession.Store(speed);
+            /// 
+
+            using (var session = MartenDocumentStore.Store.LightweightSession())
+            {
+                session.Events.StartStream<SpeedClaimCreated>();
+                session.Events.Append();
+            }
+
+
+
 
             return RedirectToAction("AllUnverified");
         }
@@ -71,7 +87,7 @@ namespace DsSpeeds.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(RecordedSpeed speed)
+        public ActionResult Edit(SpeedClaimModel speed)
         {
             speed.LastUpdatedBy = User.Identity.Name;
             speed.LastUpdatedOn = DateTime.Now;

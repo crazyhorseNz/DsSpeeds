@@ -12,14 +12,14 @@
     <div class="col-md-4">
         <h2>Enter a speed</h2>
         <p>Got a speed claim you want entered into the record? Enter it here. You will need pilot, plane, location, and speed details. </p>
-        <p>@Html.ActionLink("Enter a speed »", "Create", new { controller = "RecordedSpeeds" }, new { @class = "btn btn-default" })</p>
+        <p>@Html.ActionLink("Enter a speed »", "Create", new { controller = "SpeedClaims" }, new { @class = "btn btn-default" })</p>
     </div>
 
     <div class="col-md-4">
         <h2>Verify a speed</h2>
         <p>Witnessed a speed claim? So that speed can be considered official, you will need to have witnessed the radar registered speed, and not be the pilot or the person
            who entered the claim.</p>
-        <p>@Html.ActionLink("Verify a speed »", "AllUnverified", new { controller = "RecordedSpeeds" }, new { @class = "btn btn-default" })</p>
+        <p>@Html.ActionLink("Verify a speed »", "AllUnverified", new { controller = "SpeedClaims" }, new { @class = "btn btn-default" })</p>
     </div>
 
     <div class="col-md-4">
