@@ -25,8 +25,8 @@ namespace DatabaseInitialiser
                 new Aircraft(),
                 new Countries(),
                 new People(),
-                new CreateSpeedClaims(),
-                new VerifyAndRejectSpeedClaims(), 
+                //new CreateSpeedClaims(),
+                //new VerifyAndRejectSpeedClaims(), 
             };
 
             using (var session = MartenDocumentStore.Store.LightweightSession())

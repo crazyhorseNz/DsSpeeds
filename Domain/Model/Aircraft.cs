@@ -5,7 +5,7 @@ namespace Domain.Model
 {
     public class Aircraft : Entity
     {
-        public string PlaneName { get; set; }
+        public string AircraftName { get; set; }
 
         public int WingSpanInInches { get; set; }
 

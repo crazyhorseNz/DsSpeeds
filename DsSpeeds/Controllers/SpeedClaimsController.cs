@@ -1,13 +1,12 @@
-﻿using Commands;
-using Data;
+﻿using Commands.SpeedClaims;
 using DsSpeeds.Models.SpeedClaims;
+using Marten;
 using Read.Models;
+using StructureMap;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using Commands.SpeedClaims;
-using Marten;
-using StructureMap;
+using Domain.Model;
 
 namespace DsSpeeds.Controllers
 {
@@ -17,37 +16,45 @@ namespace DsSpeeds.Controllers
         {
         }
 
-        // GET: SpeedClaims
+
+        [HttpGet]
         public ActionResult AllVerified()
         {
             ViewBag.Title = "All Verified Speeds";
                 
-            var allVerified = MartenSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified).ToList();
+            var allVerified = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified).ToList();
 
             return View("Index", allVerified);
-
         }
 
-        // GET: SpeedClaims
+
+        [HttpGet]
         public ActionResult AllUnverified()
         {
             ViewBag.Title = "All Unverified Speeds";
 
-            var allUnverified = MartenSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified == false).ToList();
+            var allUnverified = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified == false).ToList();
 
             return View("UnverifiedIndex", allUnverified);
         }
 
-        public ActionResult Create()
-        {
-            return View("Create");
-        }
-
+        [HttpGet]
         public ActionResult Details(Guid id)
         {
-            var recSpeed = MartenSession.Query<RecordedSpeedReadModel>().Single(speed => speed.Id == id);
+            var recSpeed = DocumentSession.Load<RecordedSpeedReadModel>(id);
 
             return View("Details", recSpeed);
+        }
+
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            ViewBag.People = DocumentSession.Query<Person>().Select(p => new SelectListItem { Text = p.UserName, Value = p.Id.ToString() }).ToList();
+            ViewBag.Aircraft = DocumentSession.Query<Aircraft>().Select(p => new SelectListItem { Text = p.AircraftName, Value = p.Id.ToString() }).ToList();
+            ViewBag.Sites = DocumentSession.Query<Site>().Select(p => new SelectListItem { Text = p.SiteName, Value = p.Id.ToString() }).ToList();
+
+            return View("Create", new CreateSpeedClaimCommand());
         }
 
         [HttpPost]

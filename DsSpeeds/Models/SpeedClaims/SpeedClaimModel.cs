@@ -6,6 +6,7 @@ namespace DsSpeeds.Models.SpeedClaims
     public class SpeedClaimModel
     {
         public Guid Id { get; set; }
+
         [Display(Name="Date")]
         public DateTime Date { get; set; }
 
@@ -18,15 +19,11 @@ namespace DsSpeeds.Models.SpeedClaims
         [Display(Name = "Witness")]
         public string WitnessName { get; set; }
 
-
         [Display(Name = "Verified")]
         public bool IsVerified { get; set; }
 
         [Display(Name = "Place")]
         public string LocationPlaceName { get; set; }
-
-        [Display(Name = "Country")]
-        public string LocationCountryName { get; set; }
 
         [Display(Name = "Notes")]
         public string Notes { get; set; }

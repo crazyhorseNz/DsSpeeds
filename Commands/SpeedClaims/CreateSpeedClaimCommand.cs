@@ -35,7 +35,7 @@ namespace Commands.SpeedClaims
             @event.PilotName = session.Query<Person>().Single(a => a.Id == PilotId).UserName;
             @event.WitnessName = session.Query<Person>().Single(a => a.Id == WitnessId).UserName;
             @event.SiteName = session.Query<Site>().Single(a => a.Id == SiteId).SiteName;
-            @event.AircraftName = session.Query<Aircraft>().Single(a => a.Id == AircraftId).PlaneName;
+            @event.AircraftName = session.Query<Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
 
             var speedRecordId = session.Events.StartStream<RecordedSpeed>(@event);
 

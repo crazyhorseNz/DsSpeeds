@@ -9,7 +9,7 @@ namespace Commands
 {
     public class CreateAircraftCommand : BaseCommand, ICommand
     {
-        public string PlaneName { get; set; }
+        public string AircraftName { get; set; }
 
         public string PlaneManufacturer { get; set; }
 
