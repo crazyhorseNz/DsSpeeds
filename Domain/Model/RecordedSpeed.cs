@@ -11,7 +11,7 @@ namespace Domain.Model
 
         public bool IsVerified { get; set; }
 
-        public bool IsRejected { get; set; }
+        public bool IsDeleted { get; set; }
 
         public string Notes { get; set; }
 
@@ -42,14 +42,13 @@ namespace Domain.Model
         {
             VerifiedById = verifiedEvent.VerifiedById;
             IsVerified = true;
-            IsRejected = false;
         }
 
-        public void Apply(SpeedClaimRejected rejectedEvent)
+        public void Apply(RecordedSpeedDeleted deletedEvent)
         {
-            RejectedById = rejectedEvent.RejectedById;
+            RejectedById = deletedEvent.DeletedById;
             IsVerified = false;
-            IsRejected = true;
+            IsDeleted = true;
         }
     }
 }

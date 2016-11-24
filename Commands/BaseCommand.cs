@@ -4,6 +4,15 @@ namespace Commands
 {
     public abstract class BaseCommand
     {
-        public IDocumentStore DocumentStore { get; set; }
+        protected BaseCommand()
+        {
+        }
+
+        protected BaseCommand(IDocumentSession docSession)
+        {
+            DocumentSession = docSession;
+        }
+
+        protected IDocumentSession DocumentSession { get; set; }
     }
 }

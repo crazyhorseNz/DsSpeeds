@@ -8,21 +8,21 @@ using System.Linq;
 
 namespace Commands.SpeedClaims
 {
-    public class VerifySpeedClaimCommand : BaseCommand, ICommand
+    public class DeleteRecordedSpeedCommand : BaseCommand, ICommand
     {
-        public VerifySpeedClaimCommand()
+        public DeleteRecordedSpeedCommand()
         {
         }
 
-        public VerifySpeedClaimCommand(IDocumentSession docSession) : base(docSession)
+        public DeleteRecordedSpeedCommand(IDocumentSession docSession) : base(docSession)
         {
         }
 
         public Guid Id { get; set; }
 
-        public DateTime SpeedVerifiedDate { get; set; }
+        public DateTime SpeedDeletionDate { get; set; }
 
-        public Guid VerifiedById { get; set; }
+        public Guid DeletedById { get; set; }
 
         public void Validate(IDocumentSession session)
         {
@@ -30,9 +30,9 @@ namespace Commands.SpeedClaims
 
         public Guid? Execute(IDocumentSession session)
         {
-            var @event = Mapper.Map<SpeedClaimVerified>(this);
-            
-            @event.VerifiedByName = session.Query<Person>().Single(a => a.Id == VerifiedById).UserName;
+            var @event = Mapper.Map<RecordedSpeedDeleted>(this);
+
+            @event.DeletedByName = session.Query<Person>().Single(a => a.Id == DeletedById).UserName;
 
             session.Events.Append(Id, @event);
 

@@ -221,6 +221,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SpeedClaims\SpeedClaimModel.cs" />
+    <Compile Include="Models\SpeedListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -290,9 +291,11 @@
     <Content Include="Views\SpeedClaims\Index.cshtml" />
     <Content Include="Views\SpeedClaims\Details.cshtml" />
     <Content Include="Views\SpeedClaims\UnverifiedIndex.cshtml" />
+    <Content Include="Views\Shared\SpeedList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\DisplayTemplates\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>

@@ -17,18 +17,18 @@ namespace DatabaseInitialiser.SeedData
             var verifiedSpeedId =
                 session.Query<Domain.Model.RecordedSpeed>().Single(rs => rs.SpeedInMilesPerHour == 99).Id;
 
-            new VerifySpeedClaimCommand()
+            new VerifySpeedClaimCommand(session)
             {
                 Id = verifiedSpeedId,
                 SpeedVerifiedDate = DateTime.Now,
                 VerifiedById = papaSmurfId
             }.Execute(session);
 
-            new RejectSpeedClaimCommand()
+            new DeleteRecordedSpeedCommand(session)
             {
                 Id = rejectSpeedId,
-                SpeedRejectionDate = DateTime.Now,
-                RejectedById = papaSmurfId
+                SpeedDeletionDate = DateTime.Now,
+                DeletedById = papaSmurfId
             }.Execute(session);
         }
     }

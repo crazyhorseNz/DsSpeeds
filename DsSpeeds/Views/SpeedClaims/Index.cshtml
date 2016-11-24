@@ -1,52 +1,5 @@
-﻿@model IEnumerable<Read.Models.RecordedSpeedReadModel>
+﻿@model DsSpeeds.Models.SpeedListModel
 
-<h2>@ViewBag.Title</h2>
-<p>@ViewBag.OpeningParagraph</p>
+<h2>All Verified Speeds"</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SpeedInMilesPerHour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PilotName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AircraftName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SiteName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpeedInMilesPerHour)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PilotName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AircraftName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SiteName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
+@Html.Partial("SpeedList", Model)

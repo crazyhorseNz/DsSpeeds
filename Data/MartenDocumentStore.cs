@@ -31,7 +31,7 @@ namespace Data
                     // Register Events
                     store.Events.AddEventType(typeof (SpeedClaimCreated));
                     store.Events.AddEventType(typeof (SpeedClaimVerified));
-                    store.Events.AddEventType(typeof (SpeedClaimRejected));
+                    store.Events.AddEventType(typeof (RecordedSpeedDeleted));
                     store.Events.AddEventType(typeof (AircraftCreated));
                     store.Events.AddEventType(typeof (SiteCreated));
                     store.Events.AddEventType(typeof (PersonCreated));

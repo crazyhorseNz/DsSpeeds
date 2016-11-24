@@ -9,13 +9,13 @@ namespace Read.Models
 
         public DateTime? VerifiedDate { get; set; }
 
-        public DateTime? RejectedDate { get; set; }
+        public DateTime? DeletionDate { get; set; }
 
         public long SpeedInMilesPerHour { get; set; }
 
         public bool IsVerified { get; set; }
 
-        public bool IsRejected { get; set; }
+        public bool IsDeleted { get; set; }
 
         public string Notes { get; set; }
 
@@ -25,7 +25,7 @@ namespace Read.Models
 
         public string VerifiedByName { get; set; }
 
-        public string RejectedByName { get; set; }
+        public string DeletedByName { get; set; }
 
         public string SiteName { get; set; }
 
@@ -37,7 +37,6 @@ namespace Read.Models
             Date = speedClaimCreatedEvent.SpeedClaimedDate;
             SpeedInMilesPerHour = speedClaimCreatedEvent.SpeedInMilesPerHour;
             Notes = speedClaimCreatedEvent.Notes;
-            IsVerified = false;
             WitnessName = speedClaimCreatedEvent.WitnessName;
             PilotName = speedClaimCreatedEvent.PilotName;
             SiteName = speedClaimCreatedEvent.SiteName;
@@ -49,15 +48,14 @@ namespace Read.Models
             VerifiedDate = speedClaimVerifiedEvent.SpeedVerifiedDate;
             VerifiedByName = speedClaimVerifiedEvent.VerifiedByName;
             IsVerified = true;
-            IsRejected = false;
         }
-
-        public void Apply(SpeedClaimRejected speedClaimRejectedEvent)
+    
+        public void Apply(RecordedSpeedDeleted deletedEvent)
         {
-            RejectedDate = speedClaimRejectedEvent.SpeedRejectionDate;
-            RejectedByName = speedClaimRejectedEvent.RejectedByName;
+            DeletionDate = deletedEvent.SpeedDeletionDate;
+            DeletedByName = deletedEvent.DeletedByName;
             IsVerified = false;
-            IsRejected = true;
+            IsDeleted = true;
         }
 
     }

@@ -1,15 +1,23 @@
-﻿using System;
-using AutoMapper;
-using Data;
+﻿using AutoMapper;
 using Domain.Events;
 using Domain.Model;
 using Marten;
 using Shared;
+using System;
 
 namespace Commands
 {
     public class CreatePersonCommand : BaseCommand, ICommand
     {
+        public CreatePersonCommand()
+        {
+        }
+
+        public CreatePersonCommand(IDocumentSession docSession) 
+            : base(docSession)
+        {
+        }
+
         public string UserName { get; set; }
 
         public string Email { get; set; }

@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using Domain.Model;
+using DsSpeeds.Models;
 
 namespace DsSpeeds.Controllers
 {
@@ -20,11 +21,12 @@ namespace DsSpeeds.Controllers
         [HttpGet]
         public ActionResult AllVerified()
         {
-            ViewBag.Title = "All Verified Speeds";
-                
-            var allVerified = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified).ToList();
+            var model = new SpeedListModel
+            {
+                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified && !speed.IsDeleted).ToList()
+            };
 
-            return View("Index", allVerified);
+            return View("Index", model);
         }
 
 
@@ -33,9 +35,12 @@ namespace DsSpeeds.Controllers
         {
             ViewBag.Title = "All Unverified Speeds";
 
-            var allUnverified = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified == false).ToList();
+            var model = new SpeedListModel
+            {
+                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => !speed.IsVerified && !speed.IsDeleted).ToList()
+            };
 
-            return View("UnverifiedIndex", allUnverified);
+            return View("UnverifiedIndex", model);
         }
 
         [HttpGet]
@@ -54,13 +59,12 @@ namespace DsSpeeds.Controllers
             ViewBag.Aircraft = DocumentSession.Query<Aircraft>().Select(p => new SelectListItem { Text = p.AircraftName, Value = p.Id.ToString() }).ToList();
             ViewBag.Sites = DocumentSession.Query<Site>().Select(p => new SelectListItem { Text = p.SiteName, Value = p.Id.ToString() }).ToList();
 
-            return View("Create", new CreateSpeedClaimCommand());
+            return View("Create", new CreateSpeedClaimCommand(DocumentSession));
         }
 
         [HttpPost]
         public ActionResult Create(CreateSpeedClaimCommand speedClaim)
         {
-            //speedClaim.Execute();
             ExecuteCommand(speedClaim);
 
             return RedirectToAction("AllUnverified");
@@ -86,33 +90,28 @@ namespace DsSpeeds.Controllers
             return RedirectToAction("AllVerified");
         }
 
-        public ActionResult Delete(string id)
+        [HttpPost]
+        public ActionResult Delete(Guid id)
         {
-            //var recSpeed = DocumentSession.Load<RecordedSpeed>(id);
-            //DocumentSession.Delete<RecordedSpeed>(recSpeed);
+            var command = new DeleteRecordedSpeedCommand(DocumentSession)
+            {
+                Id = id,
+                SpeedDeletionDate = DateTime.Today,
+                DeletedById = CurrentUser
+            };
+
+            ExecuteCommand(command);
 
             return RedirectToAction("AllVerified");
-        }
-
-        public ActionResult DeleteUnverified(string id)
-        {
-           // var recSpeed = DocumentSession.Load<RecordedSpeed>(id);
-           // DocumentSession.Delete<RecordedSpeed>(recSpeed);
-
-            return RedirectToAction("AllUnverified");
         }
 
         [HttpPost]
         public ActionResult Verify(Guid id)
         {
-            var verifiedBy = DocumentSession.Query<Person>().Single(p => p.UserName == "psmurf").Id;
-
-            var command = new VerifySpeedClaimCommand
-            {
-                Id = id,
-                SpeedVerifiedDate = DateTime.Today,
-                VerifiedById = verifiedBy
-            };
+            var command = CreateCommand<VerifySpeedClaimCommand>();
+            command.Id = id;
+            command.SpeedVerifiedDate = DateTime.Today;
+            command.VerifiedById = CurrentUser;
 
             ExecuteCommand(command);
 

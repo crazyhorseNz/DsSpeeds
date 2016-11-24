@@ -10,6 +10,14 @@ namespace Commands.SpeedClaims
 {
     public class CreateSpeedClaimCommand : BaseCommand, ICommand
     {
+        public CreateSpeedClaimCommand()
+        {
+        }
+
+        public CreateSpeedClaimCommand(IDocumentSession docSession) : base(docSession)
+        {
+        }
+
         public DateTime SpeedClaimedDate { get; set; }
 
         public long SpeedInMilesPerHour { get; set; }
@@ -43,5 +51,6 @@ namespace Commands.SpeedClaims
 
             return speedRecordId;
         }
+
     }
 }

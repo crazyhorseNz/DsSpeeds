@@ -51,7 +51,7 @@
     <Compile Include="Events\CountryCreated.cs" />
     <Compile Include="Events\SiteCreated.cs" />
     <Compile Include="Events\AircraftCreated.cs" />
-    <Compile Include="Events\SpeedClaims\SpeedClaimRejected.cs" />
+    <Compile Include="Events\SpeedClaims\RecordedSpeedDeleted.cs" />
     <Compile Include="Events\SpeedClaims\SpeedClaimVerified.cs" />
     <Compile Include="Events\SpeedClaims\SpeedClaimCreated.cs" />
     <Compile Include="Model\Aircraft.cs" />

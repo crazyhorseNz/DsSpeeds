@@ -9,6 +9,15 @@ namespace Commands
 {
     public class CreateAircraftCommand : BaseCommand, ICommand
     {
+        public CreateAircraftCommand()
+        {
+        }
+
+        public CreateAircraftCommand(IDocumentSession docSession) 
+            : base(docSession)
+        {
+        }
+
         public string AircraftName { get; set; }
 
         public string PlaneManufacturer { get; set; }
@@ -31,5 +40,6 @@ namespace Commands
 
             return id;
         }
+
     }
 }

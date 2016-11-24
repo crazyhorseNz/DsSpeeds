@@ -2,7 +2,9 @@
 using Shared;
 using StructureMap;
 using System;
+using System.Linq;
 using System.Web.Mvc;
+using Domain.Model;
 
 namespace DsSpeeds.Controllers
 {
@@ -27,6 +29,19 @@ namespace DsSpeeds.Controllers
         {
             Container.BuildUp(command);
             return command.Execute(DocumentSession);
+        }
+
+        public Guid CurrentUser
+        {
+            // TODO: fix this when we get the auth going...
+            get { return DocumentSession.Query<Person>().Single(p => p.UserName == "psmurf").Id; }
+        }
+
+
+        public TCommand CreateCommand<TCommand>()
+            where TCommand : ICommand
+        {
+            return Container.GetInstance<TCommand>(nameof(TCommand));
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Commands.AutoMapper
 
             CreateMap<CreateSpeedClaimCommand, SpeedClaimCreated>();
             CreateMap<VerifySpeedClaimCommand, SpeedClaimVerified>();
-            CreateMap<RejectSpeedClaimCommand, SpeedClaimRejected>();
+            CreateMap<DeleteRecordedSpeedCommand, RecordedSpeedDeleted>();
         }
     }
 }

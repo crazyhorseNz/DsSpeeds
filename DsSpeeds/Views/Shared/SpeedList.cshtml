@@ -1,0 +1,58 @@
+﻿@model DsSpeeds.Models.SpeedListModel
+
+<table class="table">
+    <tr>
+        <th>Speed In MPH</th>
+        <th>Date</th>
+        <th>Pilot</th>
+        <th>Aircraft</th>
+        <th>Site</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.SpeedList)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(@item.SpeedInMilesPerHour.ToString(), "Details", new { controller= "SpeedClaims", id = item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PilotName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AircraftName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteName)
+            </td>
+            <td>
+            <div display="inline">
+                @{
+                    if (!item.IsVerified)
+                    {
+                        using (Html.BeginForm("Verify", "SpeedClaims", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="Id" Value="@(item.Id)"/>
+                            <button type="submit">Verify</button>
+                        }
+                    }
+                }
+            </div>
+            <div display="inline">
+                @{
+                    using (Html.BeginForm("Delete", "SpeedClaims", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Id" Value="@(item.Id)"/>
+                        <button type="submit">Delete</button>
+                    }
+                }
+            </div>
+            </td>
+        </tr>
+    }
+</table>

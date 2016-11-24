@@ -14,7 +14,7 @@ namespace DatabaseInitialiser.SeedData
             var witnessId = session.Query<Domain.Model.Person>().First().Id;
             var siteId = session.Query<Domain.Model.Site>().First().Id;
 
-            new CreateSpeedClaimCommand
+            new CreateSpeedClaimCommand(session)
             {
                 SpeedClaimedDate = DateTime.Today,
                 Notes = "Shit that was fast",
@@ -25,7 +25,7 @@ namespace DatabaseInitialiser.SeedData
                 SiteId = siteId
             }.Execute(session);
 
-            new CreateSpeedClaimCommand
+            new CreateSpeedClaimCommand(session)
             {
                 SpeedClaimedDate = DateTime.Today,
                 Notes = "You suck",
@@ -36,7 +36,7 @@ namespace DatabaseInitialiser.SeedData
                 SiteId = siteId
             }.Execute(session);
 
-            new CreateSpeedClaimCommand
+            new CreateSpeedClaimCommand(session)
             {
                 SpeedClaimedDate = DateTime.Today.AddDays(-20),
                 Notes = "Cheaty cheaty",

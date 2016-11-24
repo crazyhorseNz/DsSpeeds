@@ -1,15 +1,23 @@
-﻿using System;
-using AutoMapper;
-using Data;
+﻿using AutoMapper;
 using Domain.Events;
 using Domain.Model;
 using Marten;
 using Shared;
+using System;
 
 namespace Commands
 {
     public class CreateSiteCommand : BaseCommand, ICommand
     {
+        public CreateSiteCommand()
+        {
+        }
+
+        public CreateSiteCommand(IDocumentSession docSession) 
+            : base(docSession)
+        {
+        }
+
         public string SiteName { get; set; }
 
         public string Location { get; set; }

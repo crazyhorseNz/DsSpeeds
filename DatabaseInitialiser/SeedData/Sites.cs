@@ -7,8 +7,8 @@ namespace DatabaseInitialiser.SeedData
     {
         public void Run(IDocumentSession session)
         {
-            new CreateSiteCommand { Location = "Wellington", SiteName = "Ngaio" }.Execute(session);
-            new CreateSiteCommand { Location = "Wellington", SiteName = "Long Gully" }.Execute(session);
+            new CreateSiteCommand(session) { Location = "Wellington", SiteName = "Ngaio" }.Execute(session);
+            new CreateSiteCommand(session) { Location = "Wellington", SiteName = "Long Gully" }.Execute(session);
         }
     }
 }
