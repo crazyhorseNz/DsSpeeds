@@ -26,11 +26,11 @@ namespace Commands.SpeedClaims
 
             @event.RejectedByName = session.Query<Person>().Single(a => a.Id == RejectedById).UserName;
 
-            var speedRecordId = session.Events.StartStream<RecordedSpeed>(@event);
+            session.Events.Append(Id, @event);
 
             session.SaveChanges();
 
-            return speedRecordId;
+            return null;
         }
     }
 }

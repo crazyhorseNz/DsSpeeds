@@ -26,11 +26,11 @@ namespace Commands.SpeedClaims
             
             @event.VerifiedByName = session.Query<Person>().Single(a => a.Id == VerifiedById).UserName;
 
-            var speedRecordId = session.Events.StartStream<RecordedSpeed>(@event);
+            session.Events.Append(Id, @event);
 
             session.SaveChanges();
 
-            return speedRecordId;
+            return null;
         }
     }
 }

@@ -45,9 +45,17 @@
             @Html.DisplayFor(modelItem => item.SiteName)
         </td>
         <td>
-            @Html.ActionLink("Verify", "Verify", new { id = item.Id }) |    
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "DeleteUnverified", new { id = item.Id })
+
+            @using (Html.BeginForm("Verify", "SpeedClaims", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Id" Value="@(item.Id)"/>
+                <button type="submit">Verify</button>
+            }
+
+
+            @Html.ActionLink("Details", "Details", new {id = item.Id, @class="button"}) |
+            @Html.ActionLink("Delete", "DeleteUnverified", new {id = item.Id, @class = "button" })
         </td>
     </tr>
 }

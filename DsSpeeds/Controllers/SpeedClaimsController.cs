@@ -102,17 +102,21 @@ namespace DsSpeeds.Controllers
             return RedirectToAction("AllUnverified");
         }
 
-        public ActionResult Verify(string id)
+        [HttpPost]
+        public ActionResult Verify(Guid id)
         {
-            //var recSpeed = DocumentSession.Load<RecordedSpeed>(id);
-            //recSpeed.IsVerified = true;
-            //recSpeed.VerifyingUserName = User.Identity.Name;
-            //recSpeed.LastUpdatedBy = User.Identity.Name;
-            //recSpeed.LastUpdatedOn = DateTime.Now;
+            var verifiedBy = DocumentSession.Query<Person>().Single(p => p.UserName == "psmurf").Id;
 
-            //DocumentSession.Store(recSpeed);
+            var command = new VerifySpeedClaimCommand
+            {
+                Id = id,
+                SpeedVerifiedDate = DateTime.Today,
+                VerifiedById = verifiedBy
+            };
 
-            return RedirectToAction("Details", new { id });
+            ExecuteCommand(command);
+
+            return RedirectToAction("AllVerified");
         }
 
     }
