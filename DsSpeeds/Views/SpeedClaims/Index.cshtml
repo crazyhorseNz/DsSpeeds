@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DsSpeeds.Models.SpeedClaims.SpeedClaimModel>
+﻿@model IEnumerable<Read.Models.RecordedSpeedReadModel>
 
 <h2>@ViewBag.Title</h2>
 <p>@ViewBag.OpeningParagraph</p>
@@ -15,13 +15,10 @@
             @Html.DisplayNameFor(model => model.PilotName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PlaneName)
+            @Html.DisplayNameFor(model => model.AircraftName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LocationPlaceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LocationCountryName)
+            @Html.DisplayNameFor(model => model.SiteName)
         </th>
         <th></th>
     </tr>
@@ -39,13 +36,10 @@
                 @Html.DisplayFor(modelItem => item.PilotName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PlaneName)
+                @Html.DisplayFor(modelItem => item.AircraftName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LocationPlaceName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationCountryName)
+                @Html.DisplayFor(modelItem => item.SiteName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

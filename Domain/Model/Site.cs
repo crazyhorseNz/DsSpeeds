@@ -1,6 +1,4 @@
-﻿
-
-using Domain.Commands;
+﻿using AutoMapper;
 using Domain.Events;
 
 namespace Domain.Model
@@ -11,11 +9,11 @@ namespace Domain.Model
 
         public string Location { get; set; }
 
-        public Country Country { get; set; }
+      //  public Country Country { get; set; }
 
         public void Apply(SiteCreated createdEvent)
         {
-
+            Mapper.Map(createdEvent, this);
         }
 
     }

@@ -9,7 +9,7 @@ namespace Domain.Events
 
         public string Location { get; set; }
 
-        public Guid CountryId { get; set; }
+        //public Guid CountryId { get; set; }
 
     }
 }

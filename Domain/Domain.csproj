@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Domain</RootNamespace>
     <AssemblyName>Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,12 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CreateAircraftType.cs" />
-    <Compile Include="Commands\CreateSite.cs" />
-    <Compile Include="Commands\CreateSpeedClaim.cs" />
+    <Compile Include="AutoMapper\EventsToDomain.cs" />
+    <Compile Include="Events\PersonCreated.cs" />
+    <Compile Include="Events\CountryCreated.cs" />
     <Compile Include="Events\SiteCreated.cs" />
-    <Compile Include="Events\AircraftTypeCreated.cs" />
-    <Compile Include="Events\SpeedClaimCreated.cs" />
+    <Compile Include="Events\AircraftCreated.cs" />
+    <Compile Include="Events\SpeedClaims\SpeedClaimRejected.cs" />
+    <Compile Include="Events\SpeedClaims\SpeedClaimVerified.cs" />
+    <Compile Include="Events\SpeedClaims\SpeedClaimCreated.cs" />
     <Compile Include="Model\Aircraft.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Entity.cs" />
@@ -59,6 +67,10 @@
       <Project>{e2f4f435-1ba6-42f6-9097-f112f2cbde08}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

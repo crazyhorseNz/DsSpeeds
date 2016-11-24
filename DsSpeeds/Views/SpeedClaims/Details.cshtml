@@ -1,4 +1,4 @@
-﻿@model DsSpeeds.Models.SpeedClaims.SpeedClaimModel
+﻿@model Read.Models.RecordedSpeedReadModel
 
 @{
     ViewBag.Title = "Details";
@@ -51,20 +51,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LocationPlaceName)
+            @Html.DisplayNameFor(model => model.SiteName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LocationPlaceName)
+            @Html.DisplayFor(model => model.SiteName)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.LocationCountryName)
-        </dt>
+        </dt>*@
 
-        <dd>
+        @*<dd>
             @Html.DisplayFor(model => model.LocationCountryName)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Notes)
@@ -72,40 +72,8 @@
         <dd>
             @Html.DisplayFor(model => model.Notes)
         </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReportingUserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ReportingUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VerifyingUserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.VerifyingUserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastUpdatedBy)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastUpdatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastUpdatedOn)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastUpdatedOn)
-        </dd>
-
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
 </p>

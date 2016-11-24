@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shared;
 
-namespace Domain.Events
+namespace Domain.Events.SpeedClaims
 {
     public class SpeedClaimVerified : IDomainEvent
     {
+        public Guid Id { get; set; }
+
         public DateTime SpeedVerifiedDate { get; set; }
 
         public Guid VerifiedById { get; set; }
+
+        public string VerifiedByName { get; set; }
     }
 }

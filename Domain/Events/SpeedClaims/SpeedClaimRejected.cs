@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shared;
 
-namespace Domain.Events
+namespace Domain.Events.SpeedClaims
 {
     public class SpeedClaimRejected : IDomainEvent
     {
+        public Guid Id { get; set; }
+
         public DateTime SpeedRejectionDate { get; set; }
 
         public Guid RejectedById { get; set; }
+
+        public string RejectedByName { get; set; }
     }
+    
 }

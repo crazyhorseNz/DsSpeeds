@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DsSpeeds.Models.SpeedClaims.SpeedClaimModel>
+﻿@model IEnumerable<Read.Models.RecordedSpeedReadModel>
 
 <h2>@ViewBag.Title</h2>
 <p>The following are claimed speeds which have not yet been independently verified. You can verify the speeds below if you meet the following criteria:</p>
@@ -19,13 +19,10 @@
             @Html.DisplayNameFor(model => model.PilotName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PlaneName)
+            @Html.DisplayNameFor(model => model.AircraftName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LocationPlaceName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LocationCountryName)
+            @Html.DisplayNameFor(model => model.SiteName)
         </th>
         <th></th>
     </tr>
@@ -42,16 +39,14 @@
             @Html.DisplayFor(modelItem => item.PilotName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PlaneName)
+            @Html.DisplayFor(modelItem => item.AircraftName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LocationPlaceName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LocationCountryName)
+            @Html.DisplayFor(modelItem => item.SiteName)
         </td>
         <td>
             @Html.ActionLink("Verify", "Verify", new { id = item.Id }) |    
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
             @Html.ActionLink("Delete", "DeleteUnverified", new { id = item.Id })
         </td>
     </tr>

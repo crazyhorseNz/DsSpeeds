@@ -2,7 +2,7 @@
 
 namespace Domain.Events
 {
-    public class AircraftTypeCreated : IDomainEvent
+    public class AircraftCreated : IDomainEvent
     {
         public string PlaneName { get; set; }
 
