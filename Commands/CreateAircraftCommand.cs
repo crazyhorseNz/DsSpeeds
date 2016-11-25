@@ -26,17 +26,17 @@ namespace Commands
 
         public bool IsFoam { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<AircraftCreated>(this);
 
-            var id = session.Events.StartStream<Aircraft>(@event);
+            var id = DocumentSession.Events.StartStream<Aircraft>(@event);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return id;
         }

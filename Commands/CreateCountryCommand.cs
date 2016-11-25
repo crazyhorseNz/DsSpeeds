@@ -20,17 +20,17 @@ namespace Commands
 
         public string CountryName { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<CountryCreated>(this);
 
-            var countryId = session.Events.StartStream<Country>(@event);
+            var countryId = DocumentSession.Events.StartStream<Country>(@event);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return countryId;
         }

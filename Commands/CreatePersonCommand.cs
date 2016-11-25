@@ -26,17 +26,17 @@ namespace Commands
 
         public string LastName { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<PersonCreated>(this);
         
-            var personId = session.Events.StartStream<Person>(@event);
+            var personId = DocumentSession.Events.StartStream<Person>(@event);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return personId;
 

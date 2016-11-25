@@ -22,14 +22,14 @@ namespace DatabaseInitialiser.SeedData
                 Id = verifiedSpeedId,
                 SpeedVerifiedDate = DateTime.Now,
                 VerifiedById = papaSmurfId
-            }.Execute(session);
+            }.Execute();
 
             new DeleteRecordedSpeedCommand(session)
             {
                 Id = rejectSpeedId,
                 SpeedDeletionDate = DateTime.Now,
                 DeletedById = papaSmurfId
-            }.Execute(session);
+            }.Execute();
         }
     }
 }

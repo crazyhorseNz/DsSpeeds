@@ -23,7 +23,7 @@ namespace DatabaseInitialiser.SeedData
                 PilotId = pilotId,
                 WitnessId = witnessId,
                 SiteId = siteId
-            }.Execute(session);
+            }.Execute();
 
             new CreateSpeedClaimCommand(session)
             {
@@ -34,7 +34,7 @@ namespace DatabaseInitialiser.SeedData
                 PilotId = pilotId,
                 WitnessId = witnessId,
                 SiteId = siteId
-            }.Execute(session);
+            }.Execute();
 
             new CreateSpeedClaimCommand(session)
             {
@@ -45,7 +45,7 @@ namespace DatabaseInitialiser.SeedData
                 PilotId = pilotId,
                 WitnessId = witnessId,
                 SiteId = siteId
-            }.Execute(session);
+            }.Execute();
 
         }
     }

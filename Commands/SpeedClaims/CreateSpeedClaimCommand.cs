@@ -32,22 +32,22 @@ namespace Commands.SpeedClaims
 
         public Guid AircraftId { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<SpeedClaimCreated>(this);
 
-            @event.PilotName = session.Query<Person>().Single(a => a.Id == PilotId).UserName;
-            @event.WitnessName = session.Query<Person>().Single(a => a.Id == WitnessId).UserName;
-            @event.SiteName = session.Query<Site>().Single(a => a.Id == SiteId).SiteName;
-            @event.AircraftName = session.Query<Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
+            @event.PilotName = DocumentSession.Query<Person>().Single(a => a.Id == PilotId).UserName;
+            @event.WitnessName = DocumentSession.Query<Person>().Single(a => a.Id == WitnessId).UserName;
+            @event.SiteName = DocumentSession.Query<Site>().Single(a => a.Id == SiteId).SiteName;
+            @event.AircraftName = DocumentSession.Query<Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
 
-            var speedRecordId = session.Events.StartStream<RecordedSpeed>(@event);
+            var speedRecordId = DocumentSession.Events.StartStream<RecordedSpeed>(@event);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return speedRecordId;
         }

@@ -19,16 +19,11 @@ namespace DsSpeeds.Controllers
             Container = container;
         }
 
-        public Guid? ExecuteCommand<T>()
-            where T : class, ICommand
-        {
-            return Container.GetInstance<T>(nameof(T)).Execute(DocumentSession);
-        }
         public Guid? ExecuteCommand<T>(T command)
             where T : class, ICommand
         {
             Container.BuildUp(command);
-            return command.Execute(DocumentSession);
+            return command.Execute();
         }
 
         public Guid CurrentUser
@@ -36,7 +31,6 @@ namespace DsSpeeds.Controllers
             // TODO: fix this when we get the auth going...
             get { return DocumentSession.Query<Person>().Single(p => p.UserName == "psmurf").Id; }
         }
-
 
         public TCommand CreateCommand<TCommand>()
             where TCommand : ICommand

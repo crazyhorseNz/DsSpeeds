@@ -7,11 +7,11 @@ namespace DatabaseInitialiser.SeedData
     {
         public void Run(IDocumentSession session)
         {
-            new CreateCountryCommand(session) { CountryName = "New Zealand" }.Execute(session);
-            new CreateCountryCommand(session) { CountryName = "USA" }.Execute(session);
-            new CreateCountryCommand(session) { CountryName = "Germany" }.Execute(session);
-            new CreateCountryCommand(session) { CountryName = "Japan" }.Execute(session);
-            new CreateCountryCommand(session) { CountryName = "England" }.Execute(session);
+            new CreateCountryCommand(session) { CountryName = "New Zealand" }.Execute();
+            new CreateCountryCommand(session) { CountryName = "USA" }.Execute();
+            new CreateCountryCommand(session) { CountryName = "Germany" }.Execute();
+            new CreateCountryCommand(session) { CountryName = "Japan" }.Execute();
+            new CreateCountryCommand(session) { CountryName = "England" }.Execute();
         }
     }
 }

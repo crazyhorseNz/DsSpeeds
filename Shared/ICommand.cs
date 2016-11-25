@@ -5,8 +5,8 @@ namespace Shared
 {
     public interface ICommand
     {
-        Guid? Execute(IDocumentSession session);
+        Guid? Execute();
 
-        void Validate(IDocumentSession session);
+        void Validate();
     }
 }

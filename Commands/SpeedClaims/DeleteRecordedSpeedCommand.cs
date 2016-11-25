@@ -25,21 +25,21 @@ namespace Commands.SpeedClaims
 
         public Guid DeletedById { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<RecordedSpeedDeleted>(this);
 
-            @event.DeletedByName = session.Query<Person>().Single(a => a.Id == DeletedById).UserName;
+            @event.DeletedByName = DocumentSession.Query<Person>().Single(a => a.Id == DeletedById).UserName;
 
-            session.Events.Append(Id, @event);
+            DocumentSession.Events.Append(Id, @event);
 
-            session.Delete<RecordedSpeedReadModel>(@event.Id);
+            DocumentSession.Delete<RecordedSpeedReadModel>(@event.Id);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return null;
         }

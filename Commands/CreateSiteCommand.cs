@@ -24,17 +24,17 @@ namespace Commands
 
       //  public Guid CountryId { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<SiteCreated>(this);
 
-            var siteId = session.Events.StartStream<Site>(@event);
+            var siteId = DocumentSession.Events.StartStream<Site>(@event);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return siteId;
         }

@@ -24,19 +24,19 @@ namespace Commands.SpeedClaims
 
         public Guid VerifiedById { get; set; }
 
-        public void Validate(IDocumentSession session)
+        public void Validate()
         {
         }
 
-        public Guid? Execute(IDocumentSession session)
+        public Guid? Execute()
         {
             var @event = Mapper.Map<SpeedClaimVerified>(this);
             
-            @event.VerifiedByName = session.Query<Person>().Single(a => a.Id == VerifiedById).UserName;
+            @event.VerifiedByName = DocumentSession.Query<Person>().Single(a => a.Id == VerifiedById).UserName;
 
-            session.Events.Append(Id, @event);
+            DocumentSession.Events.Append(Id, @event);
 
-            session.SaveChanges();
+            DocumentSession.SaveChanges();
 
             return null;
         }
