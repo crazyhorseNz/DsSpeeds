@@ -1,9 +1,9 @@
-﻿using Domain.Events.SpeedClaims;
-using System;
+﻿using System;
+using Domain.Events.Speed;
 
 namespace Read.Models
 {
-    public class RecordedSpeedReadModel : BaseReadModel
+    public class SpeedReadModel : BaseReadModel
     {
         public DateTime Date { get; set; }
 

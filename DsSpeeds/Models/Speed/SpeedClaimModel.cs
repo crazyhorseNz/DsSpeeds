@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DsSpeeds.Models.SpeedClaims
+namespace DsSpeeds.Models.Speed
 {
     public class SpeedClaimModel
     {

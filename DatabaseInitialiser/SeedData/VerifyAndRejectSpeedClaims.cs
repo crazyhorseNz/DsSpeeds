@@ -1,7 +1,7 @@
-﻿using Commands.SpeedClaims;
-using Marten;
+﻿using Marten;
 using System;
 using System.Linq;
+using Commands.Speed;
 
 namespace DatabaseInitialiser.SeedData
 {
@@ -12,10 +12,10 @@ namespace DatabaseInitialiser.SeedData
             var papaSmurfId = session.Query<Domain.Model.Person>().Single(p => p.UserName == "psmurf").Id;
 
             var rejectSpeedId =
-                session.Query<Domain.Model.RecordedSpeed>().Single(rs => rs.SpeedInMilesPerHour == 111999).Id;
+                session.Query<Domain.Model.Speed>().Single(rs => rs.SpeedInMilesPerHour == 111999).Id;
 
             var verifiedSpeedId =
-                session.Query<Domain.Model.RecordedSpeed>().Single(rs => rs.SpeedInMilesPerHour == 99).Id;
+                session.Query<Domain.Model.Speed>().Single(rs => rs.SpeedInMilesPerHour == 99).Id;
 
             new VerifySpeedClaimCommand(session)
             {

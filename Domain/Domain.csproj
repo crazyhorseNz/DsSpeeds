@@ -51,14 +51,14 @@
     <Compile Include="Events\CountryCreated.cs" />
     <Compile Include="Events\SiteCreated.cs" />
     <Compile Include="Events\AircraftCreated.cs" />
-    <Compile Include="Events\SpeedClaims\RecordedSpeedDeleted.cs" />
-    <Compile Include="Events\SpeedClaims\SpeedClaimVerified.cs" />
-    <Compile Include="Events\SpeedClaims\SpeedClaimCreated.cs" />
+    <Compile Include="Events\Speed\RecordedSpeedDeleted.cs" />
+    <Compile Include="Events\Speed\SpeedClaimVerified.cs" />
+    <Compile Include="Events\Speed\SpeedClaimCreated.cs" />
     <Compile Include="Model\Aircraft.cs" />
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Person.cs" />
-    <Compile Include="Model\RecordedSpeed.cs" />
+    <Compile Include="Model\Speed.cs" />
     <Compile Include="Model\Site.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

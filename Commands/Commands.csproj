@@ -80,9 +80,9 @@
     <Compile Include="CreatePersonCommand.cs" />
     <Compile Include="CreateCountryCommand.cs" />
     <Compile Include="CreateSiteCommand.cs" />
-    <Compile Include="SpeedClaims\DeleteRecordedSpeedCommand.cs" />
-    <Compile Include="SpeedClaims\VerifySpeedClaimCommand.cs" />
-    <Compile Include="SpeedClaims\CreateSpeedClaimCommand.cs" />
+    <Compile Include="Speed\DeleteRecordedSpeedCommand.cs" />
+    <Compile Include="Speed\VerifySpeedClaimCommand.cs" />
+    <Compile Include="Speed\CreateSpeedClaimCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

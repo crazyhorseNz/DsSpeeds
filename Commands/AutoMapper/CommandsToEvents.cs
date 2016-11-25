@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Commands.SpeedClaims;
+using Commands.Speed;
 using Domain.Events;
-using Domain.Events.SpeedClaims;
+using Domain.Events.Speed;
 
 namespace Commands.AutoMapper
 {

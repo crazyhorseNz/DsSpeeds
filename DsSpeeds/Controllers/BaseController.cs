@@ -4,6 +4,7 @@ using StructureMap;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Commands;
 using Domain.Model;
 
 namespace DsSpeeds.Controllers
@@ -20,10 +21,11 @@ namespace DsSpeeds.Controllers
         }
 
         public Guid? ExecuteCommand<T>(T command)
-            where T : class, ICommand
+            where T : BaseCommand
         {
-            Container.BuildUp(command);
-            return command.Execute();
+            //Container.BuildUp(command);
+            command.DocumentSession = DocumentSession;
+            return ((ICommand)command).Execute();
         }
 
         public Guid CurrentUser
@@ -33,9 +35,11 @@ namespace DsSpeeds.Controllers
         }
 
         public TCommand CreateCommand<TCommand>()
-            where TCommand : ICommand
+            where TCommand :  BaseCommand, new()
         {
-            return Container.GetInstance<TCommand>(nameof(TCommand));
+            return new TCommand() {DocumentSession = DocumentSession};
+
+            // return Container.GetInstance<TCommand>(typeof(TCommand).Name);
         }
     }
 }

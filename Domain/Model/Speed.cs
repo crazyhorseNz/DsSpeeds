@@ -1,9 +1,9 @@
 ﻿using System;
-using Domain.Events.SpeedClaims;
+using Domain.Events.Speed;
 
 namespace Domain.Model
 {
-    public class RecordedSpeed : Entity
+    public class Speed : Entity
     {
         public DateTime Date { get; set; }
 

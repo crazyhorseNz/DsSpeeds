@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using Domain.Events.SpeedClaims;
+﻿using System;
+using System.Linq;
+using AutoMapper;
+using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
 using Shared;
-using System;
-using System.Linq;
 
-namespace Commands.SpeedClaims
+namespace Commands.Speed
 {
     public class VerifySpeedClaimCommand : BaseCommand, ICommand
     {

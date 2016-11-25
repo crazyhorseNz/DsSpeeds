@@ -1,7 +1,7 @@
 ﻿using System;
 using Shared;
 
-namespace Domain.Events.SpeedClaims
+namespace Domain.Events.Speed
 {
     public class SpeedClaimCreated : IDomainEvent
     {

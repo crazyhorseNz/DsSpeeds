@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
-using Domain.Events.SpeedClaims;
+using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
 using Shared;
 
-namespace Commands.SpeedClaims
+namespace Commands.Speed
 {
     public class CreateSpeedClaimCommand : BaseCommand, ICommand
     {
@@ -45,7 +45,7 @@ namespace Commands.SpeedClaims
             @event.SiteName = DocumentSession.Query<Site>().Single(a => a.Id == SiteId).SiteName;
             @event.AircraftName = DocumentSession.Query<Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
 
-            var speedRecordId = DocumentSession.Events.StartStream<RecordedSpeed>(@event);
+            var speedRecordId = DocumentSession.Events.StartStream<Domain.Model.Speed>(@event);
 
             DocumentSession.SaveChanges();
 

@@ -1,11 +1,11 @@
-﻿using Commands.SpeedClaims;
-using Marten;
+﻿using Marten;
 using System;
 using System.Linq;
+using Commands.Speed;
 
 namespace DatabaseInitialiser.SeedData
 {
-    public class CreateSpeedClaims : ISeed
+    public class Speeds : ISeed
     {
         public void Run(IDocumentSession session)
         {

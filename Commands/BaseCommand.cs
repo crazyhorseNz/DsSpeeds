@@ -13,6 +13,6 @@ namespace Commands
             DocumentSession = docSession;
         }
 
-        protected IDocumentSession DocumentSession { get; set; }
+        public IDocumentSession DocumentSession { get; set; }
     }
 }

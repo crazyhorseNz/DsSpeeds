@@ -16,7 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Commands;
-using Commands.SpeedClaims;
+using Commands.Speed;
 using Data;
 using Marten;
 using Read;
@@ -49,18 +49,20 @@ namespace DsSpeeds.DependencyResolution
             For<ICommand>()
                 .AddInstances(expr =>
                 {
-                    //expr.Type<CreateSpeedClaim>().Named(nameof(CreateSpeedClaim))
-                    RegisterCommand<CreateAircraftCommand>(expr);
-                    RegisterCommand<CreateCountryCommand>(expr);
-                    RegisterCommand<CreatePersonCommand>(expr);
-                    RegisterCommand<CreateSiteCommand>(expr);
-                    RegisterCommand<CreateSpeedClaimCommand>(expr);
+                    expr.Type<CreateAircraftCommand>().Named(nameof(CreateAircraftCommand));
+                    expr.Type<CreateCountryCommand>().Named(nameof(CreateCountryCommand));
+                    expr.Type<CreatePersonCommand>().Named(nameof(CreatePersonCommand));
+                    expr.Type<CreateSiteCommand>().Named(nameof(CreateSiteCommand));
+
+                    expr.Type<CreateSpeedClaimCommand>().Named(nameof(CreateSpeedClaimCommand));
+                    expr.Type<DeleteRecordedSpeedCommand>().Named(nameof(DeleteRecordedSpeedCommand));
+                    expr.Type<VerifySpeedClaimCommand>().Named(nameof(VerifySpeedClaimCommand));
                 });
 
             For<IReadModel>()
                 .AddInstances(expr =>
                 {
-                    RegisterReadModel<RecordedSpeedReadModel>(expr);
+                    RegisterReadModel<SpeedReadModel>(expr);
                     RegisterReadModel<SiteReadModel>(expr);
                 });
         }

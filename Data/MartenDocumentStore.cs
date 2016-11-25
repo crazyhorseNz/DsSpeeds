@@ -1,6 +1,6 @@
 ﻿using System;
 using Domain.Events;
-using Domain.Events.SpeedClaims;
+using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
 using Marten.Events;
@@ -41,11 +41,11 @@ namespace Data
                     store.Events.InlineProjections.AggregateStreamsWith<Site>();
                     store.Events.InlineProjections.AggregateStreamsWith<Aircraft>();
                     store.Events.InlineProjections.AggregateStreamsWith<Country>();
-                    store.Events.InlineProjections.AggregateStreamsWith<RecordedSpeed>();
+                    store.Events.InlineProjections.AggregateStreamsWith<Speed>();
                     
                     // Read Models updated from Events.
                     store.Events.InlineProjections.AggregateStreamsWith<SiteReadModel>();
-                    store.Events.InlineProjections.AggregateStreamsWith<RecordedSpeedReadModel>();
+                    store.Events.InlineProjections.AggregateStreamsWith<SpeedReadModel>();
                 };
             }
         }

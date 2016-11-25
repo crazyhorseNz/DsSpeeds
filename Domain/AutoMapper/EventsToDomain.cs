@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Events;
-using Domain.Events.SpeedClaims;
+using Domain.Events.Speed;
 using Domain.Model;
 
 namespace Domain.AutoMapper

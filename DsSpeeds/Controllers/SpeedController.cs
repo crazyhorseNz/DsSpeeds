@@ -1,19 +1,19 @@
-﻿using Commands.SpeedClaims;
-using DsSpeeds.Models.SpeedClaims;
-using Marten;
+﻿using Marten;
 using Read.Models;
 using StructureMap;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Commands.Speed;
 using Domain.Model;
 using DsSpeeds.Models;
+using DsSpeeds.Models.Speed;
 
 namespace DsSpeeds.Controllers
 {
-    public class SpeedClaimsController : BaseController
+    public class SpeedController : BaseController
     {
-        public SpeedClaimsController(IDocumentSession session, IContainer container) : base(session, container)
+        public SpeedController(IDocumentSession session, IContainer container) : base(session, container)
         {
         }
 
@@ -23,7 +23,7 @@ namespace DsSpeeds.Controllers
         {
             var model = new SpeedListModel
             {
-                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified).ToList()
+                SpeedList = DocumentSession.Query<SpeedReadModel>().Where(speed => speed.IsVerified).ToList()
             };
 
             return View("Index", model);
@@ -35,7 +35,7 @@ namespace DsSpeeds.Controllers
         {
             var model = new SpeedListModel
             {
-                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => !speed.IsVerified).ToList()
+                SpeedList = DocumentSession.Query<SpeedReadModel>().Where(speed => !speed.IsVerified).ToList()
             };
 
             return View("UnverifiedIndex", model);
@@ -44,7 +44,7 @@ namespace DsSpeeds.Controllers
         [HttpGet]
         public ActionResult Details(Guid id)
         {
-            var recSpeed = DocumentSession.Load<RecordedSpeedReadModel>(id);
+            var recSpeed = DocumentSession.Load<SpeedReadModel>(id);
 
             return View("Details", recSpeed);
         }
