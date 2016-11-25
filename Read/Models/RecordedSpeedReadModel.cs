@@ -15,8 +15,6 @@ namespace Read.Models
 
         public bool IsVerified { get; set; }
 
-        public bool IsDeleted { get; set; }
-
         public string Notes { get; set; }
 
         public string PilotName { get; set; }
@@ -24,8 +22,6 @@ namespace Read.Models
         public string WitnessName { get; set; }
 
         public string VerifiedByName { get; set; }
-
-        public string DeletedByName { get; set; }
 
         public string SiteName { get; set; }
 
@@ -49,14 +45,5 @@ namespace Read.Models
             VerifiedByName = speedClaimVerifiedEvent.VerifiedByName;
             IsVerified = true;
         }
-    
-        public void Apply(RecordedSpeedDeleted deletedEvent)
-        {
-            DeletionDate = deletedEvent.SpeedDeletionDate;
-            DeletedByName = deletedEvent.DeletedByName;
-            IsVerified = false;
-            IsDeleted = true;
-        }
-
     }
 }

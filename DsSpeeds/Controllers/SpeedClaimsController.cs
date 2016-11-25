@@ -23,7 +23,7 @@ namespace DsSpeeds.Controllers
         {
             var model = new SpeedListModel
             {
-                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified && !speed.IsDeleted).ToList()
+                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => speed.IsVerified).ToList()
             };
 
             return View("Index", model);
@@ -33,11 +33,9 @@ namespace DsSpeeds.Controllers
         [HttpGet]
         public ActionResult AllUnverified()
         {
-            ViewBag.Title = "All Unverified Speeds";
-
             var model = new SpeedListModel
             {
-                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => !speed.IsVerified && !speed.IsDeleted).ToList()
+                SpeedList = DocumentSession.Query<RecordedSpeedReadModel>().Where(speed => !speed.IsVerified).ToList()
             };
 
             return View("UnverifiedIndex", model);
@@ -73,20 +71,12 @@ namespace DsSpeeds.Controllers
 
         public ActionResult Edit(string id)
         {
-            //var recSpeed = DocumentSession.Load<RecordedSpeed>(id);
-
-            //return View("Edit", recSpeed);
             return View("Edit");
         }
 
         [HttpPost]
         public ActionResult Edit(SpeedClaimModel speed)
         {
-            speed.LastUpdatedBy = User.Identity.Name;
-            speed.LastUpdatedOn = DateTime.Now;
-
-            //DocumentSession.Store(speed);
-
             return RedirectToAction("AllVerified");
         }
 

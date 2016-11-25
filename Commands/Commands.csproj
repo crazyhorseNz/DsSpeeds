@@ -94,6 +94,10 @@
       <Project>{18318238-4bca-47ff-a400-22e24a380ec2}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Read\Read.csproj">
+      <Project>{bde56135-00be-4c1d-8183-a29084b47710}</Project>
+      <Name>Read</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{e2f4f435-1ba6-42f6-9097-f112f2cbde08}</Project>
       <Name>Shared</Name>

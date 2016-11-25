@@ -5,6 +5,7 @@ using Marten;
 using Shared;
 using System;
 using System.Linq;
+using Read.Models;
 
 namespace Commands.SpeedClaims
 {
@@ -35,6 +36,8 @@ namespace Commands.SpeedClaims
             @event.DeletedByName = session.Query<Person>().Single(a => a.Id == DeletedById).UserName;
 
             session.Events.Append(Id, @event);
+
+            session.Delete<RecordedSpeedReadModel>(@event.Id);
 
             session.SaveChanges();
 
