@@ -83,12 +83,10 @@ namespace DsSpeeds.Controllers
         [HttpPost]
         public ActionResult Delete(Guid id)
         {
-            var command = new DeleteRecordedSpeedCommand(DocumentSession)
-            {
-                Id = id,
-                SpeedDeletionDate = DateTime.Today,
-                DeletedById = CurrentUser
-            };
+            var command = CreateCommand<DeleteRecordedSpeedCommand>();
+            command.Id = id;
+            command.SpeedDeletionDate = DateTime.Today;
+            command.DeletedById = CurrentUser;
 
             ExecuteCommand(command);
 

@@ -1,11 +1,10 @@
-﻿using Marten;
+﻿using Domain.Model;
+using Marten;
 using Shared;
 using StructureMap;
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using Commands;
-using Domain.Model;
 
 namespace DsSpeeds.Controllers
 {
@@ -20,26 +19,23 @@ namespace DsSpeeds.Controllers
             Container = container;
         }
 
-        public Guid? ExecuteCommand<T>(T command)
-            where T : BaseCommand
-        {
-            //Container.BuildUp(command);
-            command.DocumentSession = DocumentSession;
-            return ((ICommand)command).Execute();
-        }
-
         public Guid CurrentUser
         {
             // TODO: fix this when we get the auth going...
             get { return DocumentSession.Query<Person>().Single(p => p.UserName == "psmurf").Id; }
         }
 
-        public TCommand CreateCommand<TCommand>()
-            where TCommand :  BaseCommand, new()
+        public Guid? ExecuteCommand<T>(T command)
+            where T : ICommand
         {
-            return new TCommand() {DocumentSession = DocumentSession};
+            Container.BuildUp(command);
+            return command.Execute();
+        }
 
-            // return Container.GetInstance<TCommand>(typeof(TCommand).Name);
+        public TCommand CreateCommand<TCommand>()
+            where TCommand : class, ICommand
+        {
+            return Container.GetInstance<ICommand>(typeof(TCommand).Name) as TCommand;
         }
     }
 }

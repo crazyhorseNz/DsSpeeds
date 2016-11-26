@@ -65,6 +65,8 @@ namespace DsSpeeds.DependencyResolution
                     RegisterReadModel<SpeedReadModel>(expr);
                     RegisterReadModel<SiteReadModel>(expr);
                 });
+
+            Policies.SetAllProperties(y => y.OfType<IDocumentSession>());
         }
 
 
