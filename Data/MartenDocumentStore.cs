@@ -3,8 +3,6 @@ using Domain.Events;
 using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
-using Marten.Events;
-using Marten.Events.Projections;
 using Read.Models;
 
 namespace Data

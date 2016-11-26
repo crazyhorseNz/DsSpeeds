@@ -3,6 +3,7 @@ using Commands.AutoMapper;
 using Data;
 using DatabaseInitialiser.SeedData;
 using Domain.AutoMapper;
+using System;
 
 namespace DatabaseInitialiser
 {
@@ -33,11 +34,12 @@ namespace DatabaseInitialiser
             {
                 foreach (var seed in allSeeds)
                 {
+                    Console.WriteLine($"Running DB Seed {seed.GetType().Name}");
                     seed.Run(MartenDocumentStore.Store.LightweightSession());
                     session.SaveChanges();
                 }
 
-
+                Console.WriteLine($"Finished running DB Seed...");
             }
 
         }
