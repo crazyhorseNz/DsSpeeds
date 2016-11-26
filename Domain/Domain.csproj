@@ -49,7 +49,8 @@
     <Compile Include="AutoMapper\EventsToDomain.cs" />
     <Compile Include="Events\PersonCreated.cs" />
     <Compile Include="Events\CountryCreated.cs" />
-    <Compile Include="Events\SiteCreated.cs" />
+    <Compile Include="Events\Site\SiteUpdated.cs" />
+    <Compile Include="Events\Site\SiteCreated.cs" />
     <Compile Include="Events\AircraftCreated.cs" />
     <Compile Include="Events\Speed\RecordedSpeedDeleted.cs" />
     <Compile Include="Events\Speed\SpeedClaimVerified.cs" />

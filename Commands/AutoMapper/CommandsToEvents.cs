@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Commands.Site;
 using Commands.Speed;
 using Domain.Events;
+using Domain.Events.Site;
 using Domain.Events.Speed;
 
 namespace Commands.AutoMapper

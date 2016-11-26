@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Events;
+using Domain.Events.Site;
 using Domain.Events.Speed;
 using Domain.Model;
 using Marten;

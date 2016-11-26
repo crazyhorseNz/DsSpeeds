@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Commands;
+using Commands.Site;
 using Commands.Speed;
 using Data;
 using Marten;
@@ -53,6 +54,7 @@ namespace DsSpeeds.DependencyResolution
                     expr.Type<CreateCountryCommand>().Named(nameof(CreateCountryCommand));
                     expr.Type<CreatePersonCommand>().Named(nameof(CreatePersonCommand));
                     expr.Type<CreateSiteCommand>().Named(nameof(CreateSiteCommand));
+                    expr.Type<EditSiteCommand>().Named(nameof(EditSiteCommand));
 
                     expr.Type<CreateSpeedClaimCommand>().Named(nameof(CreateSpeedClaimCommand));
                     expr.Type<DeleteRecordedSpeedCommand>().Named(nameof(DeleteRecordedSpeedCommand));

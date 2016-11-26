@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Events;
+using Domain.Events.Site;
 
 namespace Domain.Model
 {

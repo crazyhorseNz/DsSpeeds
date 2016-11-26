@@ -79,7 +79,8 @@
     <Compile Include="CreateAircraftCommand.cs" />
     <Compile Include="CreatePersonCommand.cs" />
     <Compile Include="CreateCountryCommand.cs" />
-    <Compile Include="CreateSiteCommand.cs" />
+    <Compile Include="Site\EditSiteCommand.cs" />
+    <Compile Include="Site\CreateSiteCommand.cs" />
     <Compile Include="Speed\DeleteRecordedSpeedCommand.cs" />
     <Compile Include="Speed\VerifySpeedClaimCommand.cs" />
     <Compile Include="Speed\CreateSpeedClaimCommand.cs" />

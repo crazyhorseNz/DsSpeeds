@@ -1,7 +1,6 @@
-﻿using System;
-using Shared;
+﻿using Shared;
 
-namespace Domain.Events
+namespace Domain.Events.Site
 {
     public class SiteCreated : IDomainEvent
     {

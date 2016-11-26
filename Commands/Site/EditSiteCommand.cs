@@ -1,23 +1,24 @@
 ﻿using AutoMapper;
-using Domain.Events;
-using Domain.Model;
 using Marten;
 using Shared;
 using System;
+using Domain.Events.Site;
 
-namespace Commands
+namespace Commands.Site
 {
-    public class CreateSiteCommand : BaseCommand, ICommand
+    public class EditSiteCommand : BaseCommand, ICommand
     {
-        public CreateSiteCommand()
+        public EditSiteCommand()
         {
         }
 
-        public CreateSiteCommand(IDocumentSession docSession) 
+        public EditSiteCommand(IDocumentSession docSession) 
             : base(docSession)
         {
         }
 
+        public Guid Id { get; set; }
+        
         public string SiteName { get; set; }
 
         public string Location { get; set; }
@@ -30,13 +31,13 @@ namespace Commands
 
         public Guid? Execute()
         {
-            var @event = Mapper.Map<SiteCreated>(this);
+            var @event = Mapper.Map<SiteUpdated>(this);
 
-            var siteId = DocumentSession.Events.StartStream<Site>(@event);
+            DocumentSession.Events.Append(Id, @event);
 
             DocumentSession.SaveChanges();
 
-            return siteId;
+            return null;
         }
     }
 }
