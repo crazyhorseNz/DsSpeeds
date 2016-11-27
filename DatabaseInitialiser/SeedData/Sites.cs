@@ -1,5 +1,6 @@
 ﻿using Commands;
 using Marten;
+using Commands.Site;
 
 namespace DatabaseInitialiser.SeedData
 {

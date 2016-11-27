@@ -23,7 +23,7 @@ namespace Commands.Site
 
         public string Location { get; set; }
 
-      //  public Guid CountryId { get; set; }
+        public Guid CountryId { get; set; }
 
         public void Validate()
         {

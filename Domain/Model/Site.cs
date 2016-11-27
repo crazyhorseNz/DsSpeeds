@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Events.Site;
+using System;
 
 namespace Domain.Model
 {
@@ -9,7 +10,7 @@ namespace Domain.Model
 
         public string Location { get; set; }
 
-      //  public Country Country { get; set; }
+        public Guid CountryId { get; set; }
 
         public void Apply(SiteCreated createdEvent)
         {

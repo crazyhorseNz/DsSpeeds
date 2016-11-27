@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Domain.Events.Site;
-using Domain.Model;
 using Marten;
 using Shared;
 using System;
@@ -22,7 +21,7 @@ namespace Commands.Site
 
         public string Location { get; set; }
 
-      //  public Guid CountryId { get; set; }
+        public Guid CountryId { get; set; }
 
         public void Validate()
         {
@@ -32,7 +31,7 @@ namespace Commands.Site
         {
             var @event = Mapper.Map<SiteCreated>(this);
 
-            var siteId = DocumentSession.Events.StartStream<Site>(@event);
+            var siteId = DocumentSession.Events.StartStream<Domain.Model.Site>(@event);
 
             DocumentSession.SaveChanges();
 

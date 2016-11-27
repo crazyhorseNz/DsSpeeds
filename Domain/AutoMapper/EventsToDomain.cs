@@ -2,6 +2,7 @@
 using Domain.Events;
 using Domain.Events.Speed;
 using Domain.Model;
+using Domain.Events.Site;
 
 namespace Domain.AutoMapper
 {

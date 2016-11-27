@@ -203,6 +203,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -292,6 +293,7 @@
     <Content Include="Views\Speed\Details.cshtml" />
     <Content Include="Views\Speed\UnverifiedIndex.cshtml" />
     <Content Include="Views\Shared\SpeedList.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

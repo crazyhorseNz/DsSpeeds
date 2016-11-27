@@ -1,5 +1,4 @@
-﻿using Domain.Events;
-using Marten;
+﻿using Domain.Events.Site;
 
 namespace Read.Models
 {
@@ -8,6 +7,8 @@ namespace Read.Models
         public string SiteName { get; set; }
 
         public string Location { get; set; }
+
+        public string CountryName { get; set; }
 
         public void Apply(SiteCreated createdEvent)
         {

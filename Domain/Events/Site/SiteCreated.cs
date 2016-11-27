@@ -1,4 +1,5 @@
 ﻿using Shared;
+using System;
 
 namespace Domain.Events.Site
 {
@@ -8,7 +9,9 @@ namespace Domain.Events.Site
 
         public string Location { get; set; }
 
-        //public Guid CountryId { get; set; }
+        public Guid CountryId { get; set; }
+
+        public string CountryName { get; set; }
 
     }
 }
