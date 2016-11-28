@@ -12,8 +12,11 @@ namespace Domain.AutoMapper
         {
             CreateMap<PersonCreated, Person>();
             CreateMap<AircraftCreated, Aircraft>();
+
             CreateMap<SiteCreated, Site>();
-            CreateMap<SpeedClaimCreated, SpeedClaimCreated>();
+            CreateMap<SiteUpdated, Site>();
+
+            CreateMap<SpeedClaimCreated, Speed>();
             CreateMap<CountryCreated, Country>();
         }
     }

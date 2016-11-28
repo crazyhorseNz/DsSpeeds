@@ -17,5 +17,13 @@ namespace Domain.Model
             Mapper.Map(createdEvent, this);
         }
 
+        public void Apply(SiteUpdated updatedEvent)
+        {
+            Mapper.Map(updatedEvent, this);
+            //SiteName = updatedEvent.SiteName;
+            //Location = updatedEvent.Location;
+            //CountryId = updatedEvent.CountryId;
+        }
+
     }
 }
