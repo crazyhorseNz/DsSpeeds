@@ -1,8 +1,10 @@
-﻿using Marten;
+﻿using System;
+using Marten;
 using Read.Models;
 using StructureMap;
 using System.Linq;
 using System.Web.Mvc;
+using DsSpeeds.Models;
 
 namespace DsSpeeds.Controllers
 {
@@ -18,6 +20,16 @@ namespace DsSpeeds.Controllers
             var allSites = DocumentSession.Query<SiteReadModel>().ToList();
 
             return View("Index", allSites);
+        }
+
+        public ActionResult Details(Guid id)
+        {
+            var model = new SpeedListModel
+            {
+                SpeedList = DocumentSession.Query<SpeedReadModel>().Where(s => s.SiteId == id).ToList()
+            };
+
+            return View("Details", model);
         }
     }
 }

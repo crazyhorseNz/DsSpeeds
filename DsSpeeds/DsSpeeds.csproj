@@ -294,6 +294,7 @@
     <Content Include="Views\Speed\UnverifiedIndex.cshtml" />
     <Content Include="Views\Shared\SpeedList.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\Site\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
