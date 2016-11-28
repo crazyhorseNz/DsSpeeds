@@ -7,6 +7,8 @@
         <th>Pilot</th>
         <th>Aircraft</th>
         <th>Site</th>
+        <th>Location</th>
+        <th>Country</th>
         <th></th>
     </tr>
 
@@ -27,6 +29,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SiteName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiteCountryName)
             </td>
             <td>
             <div display="inline">
