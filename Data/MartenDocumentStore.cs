@@ -32,7 +32,8 @@ namespace Data
                     store.Events.AddEventType(typeof (SpeedClaimVerified));
                     store.Events.AddEventType(typeof (RecordedSpeedDeleted));
                     store.Events.AddEventType(typeof (AircraftCreated));
-                    store.Events.AddEventType(typeof (SiteCreated));
+                    store.Events.AddEventType(typeof(SiteCreated));
+                    store.Events.AddEventType(typeof(SiteUpdated));
                     store.Events.AddEventType(typeof (PersonCreated));
 
                     // Domain objects updated from Events.

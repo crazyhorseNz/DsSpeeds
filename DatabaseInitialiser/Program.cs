@@ -22,12 +22,13 @@ namespace DatabaseInitialiser
 
             var allSeeds = new ISeed[]
             {
+                new Countries(),
                 new Sites(),
                 new Aircraft(),
-                new Countries(),
                 new People(),
-                //new CreateSpeedClaims(),
-                //new VerifyAndRejectSpeedClaims(), 
+                new Speeds(),
+                new VerifyAndRejectSpeedClaims(), 
+                new UpdateASite(), 
             };
 
             using (var session = MartenDocumentStore.Store.LightweightSession())

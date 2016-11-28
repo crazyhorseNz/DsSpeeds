@@ -14,6 +14,7 @@ namespace Commands.AutoMapper
             CreateMap<CreatePersonCommand, PersonCreated>();
             CreateMap<CreateAircraftCommand, AircraftCreated>();
             CreateMap<CreateSiteCommand, SiteCreated>();
+            CreateMap<EditSiteCommand, SiteUpdated>();
             CreateMap<CreateCountryCommand, CountryCreated>();
 
             CreateMap<CreateSpeedClaimCommand, SpeedClaimCreated>();

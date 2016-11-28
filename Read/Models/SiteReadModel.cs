@@ -14,6 +14,14 @@ namespace Read.Models
         {
             SiteName = createdEvent.SiteName;
             Location = createdEvent.Location;
+            CountryName = createdEvent.CountryName;
+        }
+
+        public void Apply(SiteUpdated updateEvent)
+        {
+            SiteName = updateEvent.SiteName;
+            Location = updateEvent.Location;
+            CountryName = updateEvent.CountryName;
         }
     }
 }

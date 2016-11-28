@@ -2,7 +2,10 @@
 using Marten;
 using Shared;
 using System;
+using System.Linq;
 using Domain.Events.Site;
+using Domain.Model;
+using Read.Models;
 
 namespace Commands.Site
 {
@@ -33,11 +36,35 @@ namespace Commands.Site
         {
             var @event = Mapper.Map<SiteUpdated>(this);
 
-            DocumentSession.Events.Append(Id, @event);
+            AppendUpdateSiteEvent(@event);
+
+            PatchSpeedReadModel(@event);
 
             DocumentSession.SaveChanges();
 
             return null;
+        }
+
+        private void AppendUpdateSiteEvent(SiteUpdated @event)
+        {
+            @event.SiteName = SiteName;
+            @event.Location = Location;
+            @event.CountryName = DocumentSession.Query<Country>().Single(a => a.Id == CountryId).CountryName;
+
+            DocumentSession.Events.Append(Id, @event);
+        }
+
+        private void PatchSpeedReadModel(SiteUpdated @event)
+        {
+            DocumentSession.Patch<SpeedReadModel>(model => model.SiteId == Id)
+                .Set(model => model.SiteName, @event.SiteName);
+
+            DocumentSession.Patch<SpeedReadModel>(model => model.SiteId == Id)
+                .Set(model => model.SiteLocation, @event.Location);
+
+            DocumentSession.Patch<SpeedReadModel>(model => model.SiteId == Id)
+                .Set(model => model.SiteCountryName, @event.CountryName);
+    
         }
     }
 }

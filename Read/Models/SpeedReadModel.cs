@@ -23,19 +23,28 @@ namespace Read.Models
 
         public string VerifiedByName { get; set; }
 
+        public Guid SiteId { get; set; }
+
         public string SiteName { get; set; }
+
+        public string SiteLocation { get; set; }
+
+        public string SiteCountryName { get; set; }
 
         public string AircraftName { get; set; }
 
 
         public void Apply(SpeedClaimCreated speedClaimCreatedEvent)
         {
+            SiteId = speedClaimCreatedEvent.SiteId;
             Date = speedClaimCreatedEvent.SpeedClaimedDate;
             SpeedInMilesPerHour = speedClaimCreatedEvent.SpeedInMilesPerHour;
             Notes = speedClaimCreatedEvent.Notes;
             WitnessName = speedClaimCreatedEvent.WitnessName;
             PilotName = speedClaimCreatedEvent.PilotName;
-            SiteName = speedClaimCreatedEvent.SiteName;
+            SiteName = speedClaimCreatedEvent.SiteName; 
+            SiteLocation = speedClaimCreatedEvent.SiteLocation;
+            SiteCountryName = speedClaimCreatedEvent.SiteCountryName;
             AircraftName = speedClaimCreatedEvent.AircraftName;
         }
 
@@ -45,5 +54,6 @@ namespace Read.Models
             VerifiedByName = speedClaimVerifiedEvent.VerifiedByName;
             IsVerified = true;
         }
+        
     }
 }

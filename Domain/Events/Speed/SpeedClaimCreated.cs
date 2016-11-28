@@ -6,7 +6,7 @@ namespace Domain.Events.Speed
     public class SpeedClaimCreated : IDomainEvent
     {
         public DateTime SpeedClaimedDate { get; set; }
-        
+       
         public long SpeedInMilesPerHour { get; set; }
 
         public string Notes { get; set; }
@@ -22,6 +22,10 @@ namespace Domain.Events.Speed
         public Guid SiteId { get; set; }
 
         public string SiteName { get; set; }
+
+        public string SiteLocation { get; set; }
+
+        public string SiteCountryName { get; set; }
 
         public string AircraftName { get; set; }
     }

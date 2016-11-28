@@ -12,7 +12,8 @@ namespace DatabaseInitialiser.SeedData
             var planeId = session.Query<Domain.Model.Aircraft>().First().Id;
             var pilotId = session.Query<Domain.Model.Person>().First().Id;
             var witnessId = session.Query<Domain.Model.Person>().First().Id;
-            var siteId = session.Query<Domain.Model.Site>().First().Id;
+            var ngaio = session.Query<Domain.Model.Site>().Single(s => s.SiteName == "Ngaio").Id;
+            var longGully = session.Query<Domain.Model.Site>().Single(s => s.SiteName == "Long Gully").Id;
 
             new CreateSpeedClaimCommand(session)
             {
@@ -22,7 +23,7 @@ namespace DatabaseInitialiser.SeedData
                 AircraftId = planeId,
                 PilotId = pilotId,
                 WitnessId = witnessId,
-                SiteId = siteId
+                SiteId = ngaio
             }.Execute();
 
             new CreateSpeedClaimCommand(session)
@@ -33,7 +34,7 @@ namespace DatabaseInitialiser.SeedData
                 AircraftId = planeId,
                 PilotId = pilotId,
                 WitnessId = witnessId,
-                SiteId = siteId
+                SiteId = longGully
             }.Execute();
 
             new CreateSpeedClaimCommand(session)
@@ -44,7 +45,7 @@ namespace DatabaseInitialiser.SeedData
                 AircraftId = planeId,
                 PilotId = pilotId,
                 WitnessId = witnessId,
-                SiteId = siteId
+                SiteId = longGully
             }.Execute();
 
         }

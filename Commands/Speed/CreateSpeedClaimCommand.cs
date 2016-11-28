@@ -42,8 +42,12 @@ namespace Commands.Speed
 
             @event.PilotName = DocumentSession.Query<Person>().Single(a => a.Id == PilotId).UserName;
             @event.WitnessName = DocumentSession.Query<Person>().Single(a => a.Id == WitnessId).UserName;
-            @event.SiteName = DocumentSession.Query<Domain.Model.Site>().Single(a => a.Id == SiteId).SiteName;
             @event.AircraftName = DocumentSession.Query<Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
+
+            var site = DocumentSession.Query<Domain.Model.Site>().Single(a => a.Id == SiteId);
+            @event.SiteName = site.SiteName;
+            @event.SiteLocation = site.Location;
+            @event.SiteCountryName = DocumentSession.Query<Country>().Single(a => a.Id == site.CountryId).CountryName;
 
             var speedRecordId = DocumentSession.Events.StartStream<Domain.Model.Speed>(@event);
 

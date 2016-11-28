@@ -1,6 +1,8 @@
-﻿using Commands;
+﻿using System.Linq;
+using Commands;
 using Marten;
 using Commands.Site;
+using Domain.Model;
 
 namespace DatabaseInitialiser.SeedData
 {
@@ -8,8 +10,10 @@ namespace DatabaseInitialiser.SeedData
     {
         public void Run(IDocumentSession session)
         {
-            new CreateSiteCommand(session) { Location = "Wellington", SiteName = "Ngaio" }.Execute();
-            new CreateSiteCommand(session) { Location = "Wellington", SiteName = "Long Gully" }.Execute();
+            var nz = session.Query<Country>().Single(c => c.CountryName == "New Zealand");
+
+            new CreateSiteCommand(session) { Location = "Wellington", SiteName = "Ngaio", CountryId = nz.Id}.Execute();
+            new CreateSiteCommand(session) { Location = "Wellington", SiteName = "Long Gully", CountryId = nz.Id }.Execute();
         }
     }
 }
