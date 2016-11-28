@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseInitialiser", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read", "Read\Read.csproj", "{BDE56135-00BE-4C1D-8183-A29084B47710}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8DA73AF3-F528-4CBC-A577-1C48AADCE9E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{6FB53653-A118-42FC-B196-39AB695B4899}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,11 +71,16 @@ Global
 		{BDE56135-00BE-4C1D-8183-A29084B47710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDE56135-00BE-4C1D-8183-A29084B47710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDE56135-00BE-4C1D-8183-A29084B47710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FB53653-A118-42FC-B196-39AB695B4899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB53653-A118-42FC-B196-39AB695B4899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB53653-A118-42FC-B196-39AB695B4899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB53653-A118-42FC-B196-39AB695B4899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{608F791E-D0EF-4C0D-BE3B-9F121F580703} = {45A80730-60A8-4C96-A43F-4E2CEB9D4BC3}
+		{6FB53653-A118-42FC-B196-39AB695B4899} = {8DA73AF3-F528-4CBC-A577-1C48AADCE9E8}
 	EndGlobalSection
 EndGlobal

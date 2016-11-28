@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using Data.Queries;
 using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
 using Read.Models;
 using Shared;
+using Shared.Exceptions;
 
 namespace Commands.Speed
 {
@@ -27,6 +29,11 @@ namespace Commands.Speed
 
         public void Validate()
         {
+            if (!DocumentSession.Exists<Domain.Model.Speed>(Id))
+                throw new BusinessRuleValidationException("Speed to delete cannot be found. ");
+
+            if (!DocumentSession.Exists<Person>(DeletedById))
+                throw new BusinessRuleValidationException("Deleting person cannot be found. ");
         }
 
         public Guid? Execute()

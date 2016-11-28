@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using Data.Queries;
 using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
 using Shared;
+using Shared.Exceptions;
 
 namespace Commands.Speed
 {
@@ -33,7 +35,19 @@ namespace Commands.Speed
         public Guid AircraftId { get; set; }
 
         public void Validate()
+
         {
+            if (!DocumentSession.Exists<Person>(PilotId))
+                throw new BusinessRuleValidationException("Pilot cannot be found. ");
+
+            if (!DocumentSession.Exists<Person>(WitnessId))
+                throw new BusinessRuleValidationException("Witness cannot be found. ");
+
+            if (!DocumentSession.Exists<Domain.Model.Site>(SiteId))
+                throw new BusinessRuleValidationException("Site cannot be found. ");
+
+            if (!DocumentSession.Exists<Aircraft>(AircraftId))
+                throw new BusinessRuleValidationException("Airctaft cannot be found. ");
         }
 
         public Guid? Execute()

@@ -3,6 +3,7 @@ using Domain.Events;
 using Domain.Events.Speed;
 using Domain.Model;
 using Domain.Events.Site;
+using Shared;
 
 namespace Domain.AutoMapper
 {
@@ -10,14 +11,56 @@ namespace Domain.AutoMapper
     {
         protected override void Configure()
         {
-            CreateMap<PersonCreated, Person>();
-            CreateMap<AircraftCreated, Aircraft>();
+            Person();
+            Aircraft();
+            Site();
+            Speed();
+            Country();
+        }
 
-            CreateMap<SiteCreated, Site>();
+        private void Person()
+        {
+            CreateMap<PersonCreated, Person>()
+                .ForMember(dom => dom.Id, opt => opt.Ignore());
+        }
+
+        private void Aircraft()
+        {
+            CreateMap<AircraftCreated, Aircraft>()
+                .ForMember(dom => dom.Id, opt => opt.Ignore());
+        }
+
+        private void Site()
+        {
+            CreateMap<SiteCreated, Site>()
+                .ForMember(dom => dom.Id, opt => opt.Ignore());
+
             CreateMap<SiteUpdated, Site>();
+        }
 
-            CreateMap<SpeedClaimCreated, Speed>();
-            CreateMap<CountryCreated, Country>();
+        private void Country()
+        {
+            CreateMap<CountryCreated, Country>()
+                .ForMember(dom => dom.Id, opt => opt.Ignore());
+        }
+
+        private void Speed()
+        {
+            CreateMap<SpeedClaimCreated, Speed>()
+                .ForMember(dom => dom.Id, opt => opt.Ignore())
+                .ForMember(dom => dom.DeletedById, opt => opt.Ignore())
+                .ForMember(dom => dom.VerifiedById, opt => opt.Ignore())
+                .ForMember(dom => dom.Date, opt => opt.MapFrom(e => e.SpeedClaimedDate))
+                .ForMember(dom => dom.IsDeleted, opt => opt.UseValue(false))
+                .ForMember(dom => dom.IsVerified, opt => opt.UseValue(false));
+
+            CreateMap<SpeedClaimVerified, Speed>()
+                .ForMember(dom => dom.VerifiedById, opt => opt.MapFrom(e => e.VerifiedById))
+                .ForAllOtherMembers(opt => opt.Ignore());
+
+            CreateMap<RecordedSpeedDeleted, Speed>()
+                .ForMember(dom => dom.DeletedById, opt => opt.MapFrom(e => e.DeletedById))
+                .ForAllOtherMembers(opt => opt.Ignore());
         }
     }
 }

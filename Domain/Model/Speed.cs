@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Domain.Events.Speed;
 
 namespace Domain.Model
@@ -19,7 +20,7 @@ namespace Domain.Model
 
         public Guid WitnessId { get; set; }
 
-        public Guid RejectedById { get; set; }
+        public Guid DeletedById { get; set; }
 
         public Guid VerifiedById { get; set; }
 
@@ -29,25 +30,18 @@ namespace Domain.Model
 
         public void Apply(SpeedClaimCreated createdEvent)
         {
-            Date = createdEvent.SpeedClaimedDate;
-            SpeedInMilesPerHour = createdEvent.SpeedInMilesPerHour;
-            Notes = createdEvent.Notes;
-            PilotId = createdEvent.PilotId;
-            WitnessId = createdEvent.WitnessId;
-            SiteId = createdEvent.SiteId;
-            IsVerified = false;
+            Mapper.Map(createdEvent, this);
         }
 
         public void Apply(SpeedClaimVerified verifiedEvent)
         {
-            VerifiedById = verifiedEvent.VerifiedById;
+            Mapper.Map(verifiedEvent, this);
             IsVerified = true;
         }
 
         public void Apply(RecordedSpeedDeleted deletedEvent)
         {
-            RejectedById = deletedEvent.DeletedById;
-            IsVerified = false;
+            Mapper.Map(deletedEvent, this);
             IsDeleted = true;
         }
     }

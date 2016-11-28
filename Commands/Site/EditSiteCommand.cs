@@ -3,9 +3,11 @@ using Marten;
 using Shared;
 using System;
 using System.Linq;
+using Data.Queries;
 using Domain.Events.Site;
 using Domain.Model;
 using Read.Models;
+using Shared.Exceptions;
 
 namespace Commands.Site
 {
@@ -30,6 +32,11 @@ namespace Commands.Site
 
         public void Validate()
         {
+            if (!DocumentSession.Exists<Domain.Model.Site>(Id))
+                throw new BusinessRuleValidationException("Site to update cannot be found. ");
+
+            if (!DocumentSession.Exists<Domain.Model.Country>(Id))
+                throw new BusinessRuleValidationException("Country cannot be found. ");
         }
 
         public Guid? Execute()

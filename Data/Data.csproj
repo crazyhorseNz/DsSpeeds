@@ -67,8 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MartenDocumentStore.cs" />
-    <Compile Include="Projections\SiteProjection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\DomainQueries.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

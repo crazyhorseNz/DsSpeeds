@@ -20,9 +20,6 @@ namespace Domain.Model
         public void Apply(SiteUpdated updatedEvent)
         {
             Mapper.Map(updatedEvent, this);
-            //SiteName = updatedEvent.SiteName;
-            //Location = updatedEvent.Location;
-            //CountryId = updatedEvent.CountryId;
         }
 
     }

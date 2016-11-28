@@ -29,6 +29,7 @@ namespace DsSpeeds.Controllers
             where T : ICommand
         {
             Container.BuildUp(command);
+            command.Validate();
             return command.Execute();
         }
 

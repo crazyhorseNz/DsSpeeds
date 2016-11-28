@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
+using Data.Queries;
 using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
 using Shared;
+using Shared.Exceptions;
 
 namespace Commands.Speed
 {
@@ -26,6 +28,15 @@ namespace Commands.Speed
 
         public void Validate()
         {
+            if (!DocumentSession.Exists<Domain.Model.Speed>(Id))
+                throw new BusinessRuleValidationException("Speed to verify cannot be found. ");
+
+            if (!DocumentSession.Exists<Person>(VerifiedById))
+                throw new BusinessRuleValidationException("Verifying person cannot be found. ");
+
+            var speedClaim = DocumentSession.Load<Domain.Model.Speed>(Id);
+            if (speedClaim.PilotId == VerifiedById)
+                throw new BusinessRuleValidationException("A speed claim must be verified by someone other than the pilot.");
         }
 
         public Guid? Execute()

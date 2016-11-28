@@ -85,7 +85,6 @@ namespace DsSpeeds.Controllers
         {
             var command = CreateCommand<DeleteRecordedSpeedCommand>();
             command.Id = id;
-            command.SpeedDeletionDate = DateTime.Today;
             command.DeletedById = CurrentUser;
 
             ExecuteCommand(command);

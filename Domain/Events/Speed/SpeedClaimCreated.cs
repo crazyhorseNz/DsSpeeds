@@ -21,6 +21,8 @@ namespace Domain.Events.Speed
 
         public Guid SiteId { get; set; }
 
+        public Guid AircraftId { get; set; }
+
         public string SiteName { get; set; }
 
         public string SiteLocation { get; set; }
