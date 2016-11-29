@@ -5,6 +5,7 @@ using Data.Queries;
 using Domain.Events.Speed;
 using Domain.Model;
 using Marten;
+using Read.Models;
 using Shared;
 using Shared.Exceptions;
 
@@ -47,10 +48,20 @@ namespace Commands.Speed
 
             DocumentSession.Events.Append(Id, @event);
 
+            PatchSiteSpeeds();
+
             DocumentSession.SaveChanges();
 
             return null;
         }
 
+        private void PatchSiteSpeeds()
+        {
+            var speedReadModel = DocumentSession.Load<SpeedReadModel>(Id);
+            speedReadModel.IsVerified = true;
+
+            DocumentSession.Patch<SiteReadModel>(speedReadModel.SiteId)
+                .Append(siteReadModel => siteReadModel.AllVerifiedSiteSpeeds, speedReadModel);
+        }
     }
 }

@@ -24,9 +24,11 @@ namespace DsSpeeds.Controllers
 
         public ActionResult Details(Guid id)
         {
+            var siteData = DocumentSession.Load<SiteReadModel>(id);
+
             var model = new SpeedListModel
             {
-                SpeedList = DocumentSession.Query<SpeedReadModel>().Where(s => s.SiteId == id).ToList()
+                SpeedList = siteData.AllVerifiedSiteSpeeds
             };
 
             return View("Details", model);

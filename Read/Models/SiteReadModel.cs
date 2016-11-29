@@ -1,4 +1,5 @@
-﻿using Domain.Events.Site;
+﻿using System.Collections.Generic;
+using Domain.Events.Site;
 
 namespace Read.Models
 {
@@ -9,6 +10,8 @@ namespace Read.Models
         public string Location { get; set; }
 
         public string CountryName { get; set; }
+
+        public List<SpeedReadModel> AllVerifiedSiteSpeeds { get; set; }
 
         public void Apply(SiteCreated createdEvent)
         {
