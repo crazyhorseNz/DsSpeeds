@@ -71,7 +71,6 @@ namespace Commands.Site
 
             DocumentSession.Patch<SpeedReadModel>(model => model.SiteId == Id)
                 .Set(model => model.SiteCountryName, @event.CountryName);
-    
         }
     }
 }

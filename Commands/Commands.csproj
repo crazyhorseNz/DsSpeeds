@@ -81,6 +81,7 @@
     <Compile Include="CreateCountryCommand.cs" />
     <Compile Include="Site\EditSiteCommand.cs" />
     <Compile Include="Site\CreateSiteCommand.cs" />
+    <Compile Include="Speed\EditSpeedClaimCommand.cs" />
     <Compile Include="Speed\DeleteRecordedSpeedCommand.cs" />
     <Compile Include="Speed\VerifySpeedClaimCommand.cs" />
     <Compile Include="Speed\CreateSpeedClaimCommand.cs" />

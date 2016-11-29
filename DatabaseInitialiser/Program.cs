@@ -29,6 +29,7 @@ namespace DatabaseInitialiser
                 new Speeds(),
                 new VerifyAndRejectSpeedClaims(), 
                 new UpdateASite(), 
+                new EditSpeeds(), 
             };
 
             using (var session = MartenDocumentStore.Store.LightweightSession())

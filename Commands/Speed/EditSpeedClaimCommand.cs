@@ -10,15 +10,16 @@ using Shared.Exceptions;
 
 namespace Commands.Speed
 {
-    public class CreateSpeedClaimCommand : BaseCommand, ICommand
+    public class EditSpeedClaimCommand : BaseCommand, ICommand
     {
-        public CreateSpeedClaimCommand()
+        public EditSpeedClaimCommand()
         {
         }
 
-        public CreateSpeedClaimCommand(IDocumentSession docSession) : base(docSession)
+        public EditSpeedClaimCommand(IDocumentSession docSession) : base(docSession)
         {
         }
+        public Guid Id { get; set; }
 
         public DateTime SpeedClaimedDate { get; set; }
 
@@ -37,6 +38,9 @@ namespace Commands.Speed
         public void Validate()
 
         {
+            if (!DocumentSession.Exists<Domain.Model.Speed>(Id))
+                throw new BusinessRuleValidationException("Speed cannot be found. ");
+
             if (!DocumentSession.Exists<Person>(PilotId))
                 throw new BusinessRuleValidationException("Pilot cannot be found. ");
 
@@ -47,12 +51,15 @@ namespace Commands.Speed
                 throw new BusinessRuleValidationException("Site cannot be found. ");
 
             if (!DocumentSession.Exists<Aircraft>(AircraftId))
-                throw new BusinessRuleValidationException("Aircraft cannot be found. ");
+                throw new BusinessRuleValidationException("Airctaft cannot be found. ");
+
+            if (DocumentSession.Load<Domain.Model.Speed>(Id).IsVerified)
+                throw new BusinessRuleValidationException("Cannot edit a verified speed. ");
         }
 
         public Guid? Execute()
         {
-            var @event = Mapper.Map<SpeedClaimCreated>(this);
+            var @event = Mapper.Map<SpeedClaimEdited>(this);
 
             @event.PilotName = DocumentSession.Query<Person>().Single(a => a.Id == PilotId).UserName;
             @event.WitnessName = DocumentSession.Query<Person>().Single(a => a.Id == WitnessId).UserName;
@@ -63,11 +70,11 @@ namespace Commands.Speed
             @event.SiteLocation = site.Location;
             @event.SiteCountryName = DocumentSession.Query<Country>().Single(a => a.Id == site.CountryId).CountryName;
 
-            var speedRecordId = DocumentSession.Events.StartStream<Domain.Model.Speed>(@event);
+            DocumentSession.Events.Append(Id, @event);
 
             DocumentSession.SaveChanges();
 
-            return speedRecordId;
+            return null;
         }
 
     }

@@ -54,6 +54,20 @@ namespace Read.Models
             VerifiedByName = speedClaimVerifiedEvent.VerifiedByName;
             IsVerified = true;
         }
-        
+
+        public void Apply(SpeedClaimEdited editedEvent)
+        {
+            SiteId = editedEvent.SiteId;
+            Date = editedEvent.SpeedClaimedDate;
+            SpeedInMilesPerHour = editedEvent.SpeedInMilesPerHour;
+            Notes = editedEvent.Notes;
+            WitnessName = editedEvent.WitnessName;
+            PilotName = editedEvent.PilotName;
+            SiteName = editedEvent.SiteName;
+            SiteLocation = editedEvent.SiteLocation;
+            SiteCountryName = editedEvent.SiteCountryName;
+            AircraftName = editedEvent.AircraftName;
+        }
+
     }
 }

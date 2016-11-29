@@ -5,21 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DsSpeeds", "DsSpeeds\DsSpeeds.csproj", "{5B953D80-E887-4855-972A-1B6F3208EC11}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{45A80730-60A8-4C96-A43F-4E2CEB9D4BC3}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
-		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{608F791E-D0EF-4C0D-BE3B-9F121F580703}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\Configurations\DsSpeeds-WAWS-dev.json = PublishScripts\Configurations\DsSpeeds-WAWS-dev.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6729F58A-ADFB-4C32-9D8D-719FB599B975}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{18318238-4BCA-47FF-A400-22E24A380EC2}"
 EndProject
@@ -80,7 +66,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{608F791E-D0EF-4C0D-BE3B-9F121F580703} = {45A80730-60A8-4C96-A43F-4E2CEB9D4BC3}
+		{67209462-73D8-4F00-9F50-B46BBBB9D3C5} = {6729F58A-ADFB-4C32-9D8D-719FB599B975}
 		{6FB53653-A118-42FC-B196-39AB695B4899} = {8DA73AF3-F528-4CBC-A577-1C48AADCE9E8}
 	EndGlobalSection
 EndGlobal

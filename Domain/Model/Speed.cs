@@ -44,5 +44,10 @@ namespace Domain.Model
             Mapper.Map(deletedEvent, this);
             IsDeleted = true;
         }
+
+        public void Apply(SpeedClaimEdited editedEvent)
+        {
+            Mapper.Map(editedEvent, this);
+        }
     }
 }

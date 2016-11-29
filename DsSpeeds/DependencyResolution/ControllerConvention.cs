@@ -15,6 +15,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Web.Http;
+
 namespace DsSpeeds.DependencyResolution {
     using System;
     using System.Web.Mvc;
@@ -28,8 +30,10 @@ namespace DsSpeeds.DependencyResolution {
     public class ControllerConvention : IRegistrationConvention {
         #region Public Methods and Operators
 
-        public void Process(Type type, Registry registry) {
-            if (type.CanBeCastTo<Controller>() && !type.IsAbstract) {
+        public void Process(Type type, Registry registry)
+        {
+            if (type.CanBeCastTo<Controller>() && !type.IsAbstract)
+            {
                 registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
             }
         }

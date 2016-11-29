@@ -34,6 +34,9 @@ namespace Commands.Speed
 
             if (!DocumentSession.Exists<Person>(DeletedById))
                 throw new BusinessRuleValidationException("Deleting person cannot be found. ");
+
+            if(DocumentSession.Load<Domain.Model.Speed>(Id).IsVerified)
+                throw new BusinessRuleValidationException("Cannot delete a verified speed. ");
         }
 
         public Guid? Execute()

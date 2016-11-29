@@ -80,6 +80,7 @@
     <Compile Include="SeedData\Aircraft.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SeedData\Countries.cs" />
+    <Compile Include="SeedData\EditSpeeds.cs" />
     <Compile Include="SeedData\UpdateASite.cs" />
     <Compile Include="SeedData\VerifyAndRejectSpeedClaims.cs" />
     <Compile Include="SeedData\Sites.cs" />
