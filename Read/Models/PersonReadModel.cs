@@ -23,6 +23,8 @@ namespace Read.Models
 
         public class PersonSpeedReadModel
         {
+            public Guid SpeedId { get; set; }
+
             public DateTime Date { get; set; }
 
             public long SpeedInMilesPerHour { get; set; }

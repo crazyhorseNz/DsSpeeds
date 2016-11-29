@@ -209,7 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\BaseApiController.cs" />
-    <Compile Include="ApiControllers\PersonController.cs" />
+    <Compile Include="ApiControllers\PeopleController.cs" />
     <Compile Include="ApiControllers\SiteController.cs" />
     <Compile Include="ApiControllers\SpeedController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -220,6 +220,7 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
@@ -309,6 +310,8 @@
     <Content Include="Views\Shared\SpeedList.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
     <Content Include="Views\Site\Details.cshtml" />
+    <Content Include="Views\People\Details.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

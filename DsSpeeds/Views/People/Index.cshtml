@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Read.Models.PersonReadModel>
+
+@{
+    ViewBag.Title = "All Sites";
+}
+
+<h2>All People</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonName)
+        </th>
+        <th>
+            Best Speed
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonName)
+        </td>
+        <td>
+            @{
+                if (item.AllVerifiedSiteSpeeds == null || item.AllVerifiedSiteSpeeds.Count < 1)
+                {
+                    @("No verified speeds")
+                }
+                else
+                {
+                    @(item.AllVerifiedSiteSpeeds.Max(s => s.SpeedInMilesPerHour))
+                }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>

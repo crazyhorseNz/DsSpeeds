@@ -48,6 +48,7 @@ namespace Commands.Speed
 
             var siteSpeedModel = new SiteReadModel.SiteSpeedReadModel
             {
+                SpeedId = Id,
                 Date = speedReadModel.Date,
                 AircraftName = speedReadModel.AircraftName,
                 PilotName = speedReadModel.PilotName,
@@ -64,6 +65,7 @@ namespace Commands.Speed
 
             var personSpeedModel = new PersonReadModel.PersonSpeedReadModel
             {
+                SpeedId = Id,
                 Date = speedReadModel.Date,
                 AircraftName = speedReadModel.AircraftName,
                 SpeedInMilesPerHour = speedReadModel.SpeedInMilesPerHour,

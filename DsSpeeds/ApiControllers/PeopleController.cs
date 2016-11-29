@@ -9,9 +9,9 @@ using System.Web.Http;
 
 namespace DsSpeeds.ApiControllers
 {
-    public class PersonController : BaseApiController
+    public class PeopleController : BaseApiController
     {
-        public PersonController(IDocumentSession session, IContainer container) : base(session, container)
+        public PeopleController(IDocumentSession session, IContainer container) : base(session, container)
         {
         }
 

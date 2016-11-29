@@ -9,37 +9,37 @@ using DsSpeeds.Models;
 
 namespace DsSpeeds.Controllers
 {
-    public class SiteController : BaseController
+    public class PeopleController : BaseController
     {
-        public SiteController(IDocumentSession session, IContainer container) : base(session, container)
+        public PeopleController(IDocumentSession session, IContainer container) : base(session, container)
         {
         }
 
         // GET: Site
         public ActionResult Index()
         {
-            var allSites = DocumentSession.Query<SiteReadModel>().ToList();
+            var allSites = DocumentSession.Query<PersonReadModel>().ToList();
 
             return View("Index", allSites);
         }
 
         public ActionResult Details(Guid id)
         {
-            var siteData = DocumentSession.Load<SiteReadModel>(id);
+            var personData = DocumentSession.Load<PersonReadModel>(id);
 
             var model = new SpeedListModel
             {
-                SpeedList = siteData.AllVerifiedSiteSpeeds
+                SpeedList = personData.AllVerifiedSiteSpeeds
                     .Select(summary => new SpeedReadModel
                     {
                         Id = summary.SpeedId,
                         Date = summary.Date,
                         SpeedInMilesPerHour = summary.SpeedInMilesPerHour,
                         AircraftName = summary.AircraftName,
-                        PilotName = summary.PilotName,
-                        SiteName = siteData.SiteName,
-                        SiteLocation = siteData.Location,
-                        SiteCountryName = siteData.CountryName,
+                        PilotName = personData.PersonName,
+                        SiteName = summary.SiteName,
+                        SiteLocation = summary.SiteLocation,
+                        SiteCountryName = summary.SiteCountryName,
                         IsVerified = true
                     }).ToList()
             };

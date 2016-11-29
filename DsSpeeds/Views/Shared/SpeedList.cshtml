@@ -47,16 +47,12 @@
                             <input type="hidden" name="Id" Value="@(item.Id)"/>
                             <button type="submit">Verify</button>
                         }
-                    }
-                }
-            </div>
-            <div display="inline">
-                @{
-                    using (Html.BeginForm("Delete", "Speed", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="Id" Value="@(item.Id)"/>
-                        <button type="submit">Delete</button>
+                        using (Html.BeginForm("Delete", "Speed", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="Id" Value="@(item.Id)" />
+                            <button type="submit">Delete</button>
+                        }
                     }
                 }
             </div>
