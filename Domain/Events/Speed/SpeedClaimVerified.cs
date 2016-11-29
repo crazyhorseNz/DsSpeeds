@@ -9,8 +9,5 @@ namespace Domain.Events.Speed
 
         public DateTime SpeedVerifiedDate { get; set; }
 
-        public Guid VerifiedById { get; set; }
-
-        public string VerifiedByName { get; set; }
     }
 }

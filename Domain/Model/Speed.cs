@@ -22,8 +22,6 @@ namespace Domain.Model
 
         public Guid DeletedById { get; set; }
 
-        public Guid VerifiedById { get; set; }
-
         public Guid SiteId { get; set; }
 
         public Guid AircraftId { get; set; }

@@ -23,9 +23,9 @@ namespace DatabaseInitialiser
             var allSeeds = new ISeed[]
             {
                 new Countries(),
+                new People(),
                 new Sites(),
                 new Aircraft(),
-                new People(),
                 new Speeds(),
                 new VerifyAndRejectSpeedClaims(), 
                 new UpdateASite(), 

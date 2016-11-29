@@ -64,6 +64,7 @@ namespace DsSpeeds.DependencyResolution
             For<IReadModel>()
                 .AddInstances(expr =>
                 {
+                    RegisterReadModel<PersonReadModel>(expr);
                     RegisterReadModel<SpeedReadModel>(expr);
                     RegisterReadModel<SiteReadModel>(expr);
                 });

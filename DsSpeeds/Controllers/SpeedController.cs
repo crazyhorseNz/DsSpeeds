@@ -97,8 +97,6 @@ namespace DsSpeeds.Controllers
         {
             var command = CreateCommand<VerifySpeedClaimCommand>();
             command.Id = id;
-            command.SpeedVerifiedDate = DateTime.Today;
-            command.VerifiedById = CurrentUser;
 
             ExecuteCommand(command);
 

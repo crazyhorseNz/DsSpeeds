@@ -46,6 +46,7 @@ namespace Data
                     // Read Models updated from Events.
                     store.Events.InlineProjections.AggregateStreamsWith<SiteReadModel>();
                     store.Events.InlineProjections.AggregateStreamsWith<SpeedReadModel>();
+                    store.Events.InlineProjections.AggregateStreamsWith<PersonReadModel>();
                 };
             }
         }

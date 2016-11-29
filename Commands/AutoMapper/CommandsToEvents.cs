@@ -37,10 +37,7 @@ namespace Commands.AutoMapper
                 .ForMember(e => e.SiteCountryName, opt => opt.Ignore())
                 .ForMember(e => e.AircraftName, opt => opt.Ignore());
 
-            CreateMap<VerifySpeedClaimCommand, SpeedClaimVerified>()
-                .ForMember(e => e.SpeedVerifiedDate, opt => opt.ResolveUsing(command => DateTime.Today))
-                .ForMember(e => e.VerifiedByName, opt => opt.Ignore())
-                .ForMember(e => e.VerifiedById, opt => opt.Ignore());
+            CreateMap<VerifySpeedClaimCommand, SpeedClaimVerified>();
 
             CreateMap<DeleteRecordedSpeedCommand, RecordedSpeedDeleted>()
                 .ForMember(e => e.SpeedDeletionDate, opt => opt.ResolveUsing(command => DateTime.Today))

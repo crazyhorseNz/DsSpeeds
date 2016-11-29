@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Marten;
 using Read.Models;
 using StructureMap;
@@ -29,6 +30,16 @@ namespace DsSpeeds.Controllers
             var model = new SpeedListModel
             {
                 SpeedList = siteData.AllVerifiedSiteSpeeds
+                    .Select(summary => new SpeedReadModel
+                    {
+                        Date = summary.Date,
+                        SpeedInMilesPerHour = summary.SpeedInMilesPerHour,
+                        AircraftName = summary.AircraftName,
+                        PilotName = summary.PilotName,
+                        SiteName = siteData.SiteName,
+                        SiteLocation = siteData.Location,
+                        SiteCountryName = siteData.CountryName
+                    }).ToList()
             };
 
             return View("Details", model);

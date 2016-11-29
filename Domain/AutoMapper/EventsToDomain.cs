@@ -49,20 +49,17 @@ namespace Domain.AutoMapper
             CreateMap<SpeedClaimCreated, Speed>()
                 .ForMember(dom => dom.Id, opt => opt.Ignore())
                 .ForMember(dom => dom.DeletedById, opt => opt.Ignore())
-                .ForMember(dom => dom.VerifiedById, opt => opt.Ignore())
                 .ForMember(dom => dom.Date, opt => opt.MapFrom(e => e.SpeedClaimedDate))
                 .ForMember(dom => dom.IsDeleted, opt => opt.UseValue(false))
                 .ForMember(dom => dom.IsVerified, opt => opt.UseValue(false));
 
             CreateMap<SpeedClaimEdited, Speed>()
                 .ForMember(dom => dom.DeletedById, opt => opt.Ignore())
-                .ForMember(dom => dom.VerifiedById, opt => opt.Ignore())
                 .ForMember(dom => dom.Date, opt => opt.MapFrom(e => e.SpeedClaimedDate))
                 .ForMember(dom => dom.IsDeleted, opt => opt.Ignore())
                 .ForMember(dom => dom.IsVerified, opt => opt.Ignore());
 
             CreateMap<SpeedClaimVerified, Speed>()
-                .ForMember(dom => dom.VerifiedById, opt => opt.MapFrom(e => e.VerifiedById))
                 .ForAllOtherMembers(opt => opt.Ignore());
 
             CreateMap<RecordedSpeedDeleted, Speed>()

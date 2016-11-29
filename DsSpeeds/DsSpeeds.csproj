@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\BaseApiController.cs" />
+    <Compile Include="ApiControllers\PersonController.cs" />
     <Compile Include="ApiControllers\SiteController.cs" />
     <Compile Include="ApiControllers\SpeedController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -244,10 +245,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-DsSpeeds-20141228020123.mdf" />
-    <Content Include="App_Data\aspnet-DsSpeeds-20141228020123_log.ldf">
-      <DependentUpon>aspnet-DsSpeeds-20141228020123.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -314,6 +311,7 @@
     <Content Include="Views\Site\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\DisplayTemplates\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />

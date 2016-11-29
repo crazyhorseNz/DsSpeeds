@@ -17,12 +17,7 @@ namespace DatabaseInitialiser.SeedData
             var verifiedSpeedId =
                 session.Query<Domain.Model.Speed>().Single(rs => rs.SpeedInMilesPerHour == 99).Id;
 
-            new VerifySpeedClaimCommand(session)
-            {
-                Id = verifiedSpeedId,
-                SpeedVerifiedDate = DateTime.Now,
-                VerifiedById = papaSmurfId
-            }.Execute();
+            new VerifySpeedClaimCommand(session){Id = verifiedSpeedId}.Execute();
 
             new DeleteRecordedSpeedCommand(session)
             {

@@ -14,7 +14,5 @@ namespace Domain.Events.Site
         public Guid CountryId { get; set; }
 
         public string CountryName { get; set; }
-
-
     }
 }

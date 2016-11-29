@@ -17,11 +17,11 @@ namespace Read.Models
 
         public string Notes { get; set; }
 
+        public Guid PilotId { get; set; }
+
         public string PilotName { get; set; }
 
         public string WitnessName { get; set; }
-
-        public string VerifiedByName { get; set; }
 
         public Guid SiteId { get; set; }
 
@@ -41,6 +41,7 @@ namespace Read.Models
             SpeedInMilesPerHour = speedClaimCreatedEvent.SpeedInMilesPerHour;
             Notes = speedClaimCreatedEvent.Notes;
             WitnessName = speedClaimCreatedEvent.WitnessName;
+            PilotId = speedClaimCreatedEvent.PilotId;
             PilotName = speedClaimCreatedEvent.PilotName;
             SiteName = speedClaimCreatedEvent.SiteName; 
             SiteLocation = speedClaimCreatedEvent.SiteLocation;
@@ -51,7 +52,6 @@ namespace Read.Models
         public void Apply(SpeedClaimVerified speedClaimVerifiedEvent)
         {
             VerifiedDate = speedClaimVerifiedEvent.SpeedVerifiedDate;
-            VerifiedByName = speedClaimVerifiedEvent.VerifiedByName;
             IsVerified = true;
         }
 

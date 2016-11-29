@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
 using Data.Queries;
 using Domain.Events.Speed;
-using Domain.Model;
 using Marten;
 using Read.Models;
 using Shared;
 using Shared.Exceptions;
+using System;
 
 namespace Commands.Speed
 {
@@ -23,32 +21,21 @@ namespace Commands.Speed
 
         public Guid Id { get; set; }
 
-        public DateTime SpeedVerifiedDate { get; set; }
-
-        public Guid VerifiedById { get; set; }
-
         public void Validate()
         {
             if (!DocumentSession.Exists<Domain.Model.Speed>(Id))
                 throw new BusinessRuleValidationException("Speed to verify cannot be found. ");
-
-            if (!DocumentSession.Exists<Person>(VerifiedById))
-                throw new BusinessRuleValidationException("Verifying person cannot be found. ");
-
-            var speedClaim = DocumentSession.Load<Domain.Model.Speed>(Id);
-            if (speedClaim.PilotId == VerifiedById)
-                throw new BusinessRuleValidationException("A speed claim must be verified by someone other than the pilot.");
         }
 
         public Guid? Execute()
         {
             var @event = Mapper.Map<SpeedClaimVerified>(this);
-            
-            @event.VerifiedByName = DocumentSession.Query<Person>().Single(a => a.Id == VerifiedById).UserName;
+            @event.SpeedVerifiedDate = DateTime.Now;
 
             DocumentSession.Events.Append(Id, @event);
 
             PatchSiteSpeeds();
+            PatchPersonSpeeds();
 
             DocumentSession.SaveChanges();
 
@@ -58,10 +45,35 @@ namespace Commands.Speed
         private void PatchSiteSpeeds()
         {
             var speedReadModel = DocumentSession.Load<SpeedReadModel>(Id);
-            speedReadModel.IsVerified = true;
+
+            var siteSpeedModel = new SiteReadModel.SiteSpeedReadModel
+            {
+                Date = speedReadModel.Date,
+                AircraftName = speedReadModel.AircraftName,
+                PilotName = speedReadModel.PilotName,
+                SpeedInMilesPerHour = speedReadModel.SpeedInMilesPerHour
+            };
 
             DocumentSession.Patch<SiteReadModel>(speedReadModel.SiteId)
-                .Append(siteReadModel => siteReadModel.AllVerifiedSiteSpeeds, speedReadModel);
+                .Append(siteReadModel => siteReadModel.AllVerifiedSiteSpeeds, siteSpeedModel);
+        }
+
+        private void PatchPersonSpeeds()
+        {
+            var speedReadModel = DocumentSession.Load<SpeedReadModel>(Id);
+
+            var personSpeedModel = new PersonReadModel.PersonSpeedReadModel
+            {
+                Date = speedReadModel.Date,
+                AircraftName = speedReadModel.AircraftName,
+                SpeedInMilesPerHour = speedReadModel.SpeedInMilesPerHour,
+                SiteName = speedReadModel.SiteName,
+                SiteLocation = speedReadModel.SiteLocation,
+                SiteCountryName = speedReadModel.SiteCountryName,
+            };
+
+            DocumentSession.Patch<PersonReadModel>(speedReadModel.PilotId)
+                .Append(personReadModel => personReadModel.AllVerifiedSiteSpeeds, personSpeedModel);
         }
     }
 }
