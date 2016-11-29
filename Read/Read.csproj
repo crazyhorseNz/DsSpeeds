@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="BaseReadModel.cs" />
     <Compile Include="IReadModel.cs" />
+    <Compile Include="Models\AircraftReadModel.cs" />
     <Compile Include="Models\PersonReadModel.cs" />
     <Compile Include="Models\SiteReadModel.cs" />
     <Compile Include="Models\SpeedReadModel.cs" />

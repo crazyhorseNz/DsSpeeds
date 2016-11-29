@@ -56,7 +56,7 @@ namespace Commands.Site
         {
             @event.SiteName = SiteName;
             @event.Location = Location;
-            @event.CountryName = DocumentSession.Query<Country>().Single(a => a.Id == CountryId).CountryName;
+            @event.CountryName = DocumentSession.Query<Domain.Model.Country>().Single(a => a.Id == CountryId).CountryName;
 
             DocumentSession.Events.Append(Id, @event);
         }

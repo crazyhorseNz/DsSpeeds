@@ -1,4 +1,5 @@
 ﻿using Commands;
+using Commands.People;
 using Marten;
 
 namespace DatabaseInitialiser.SeedData

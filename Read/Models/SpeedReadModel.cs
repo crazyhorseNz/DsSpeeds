@@ -31,6 +31,8 @@ namespace Read.Models
 
         public string SiteCountryName { get; set; }
 
+        public Guid AircraftId { get; set; }
+
         public string AircraftName { get; set; }
 
 
@@ -47,6 +49,7 @@ namespace Read.Models
             SiteLocation = speedClaimCreatedEvent.SiteLocation;
             SiteCountryName = speedClaimCreatedEvent.SiteCountryName;
             AircraftName = speedClaimCreatedEvent.AircraftName;
+            AircraftId = speedClaimCreatedEvent.AircraftId;
         }
 
         public void Apply(SpeedClaimVerified speedClaimVerifiedEvent)
@@ -55,18 +58,20 @@ namespace Read.Models
             IsVerified = true;
         }
 
-        public void Apply(SpeedClaimEdited editedEvent)
+        public void Apply(SpeedClaimEdited speedClaimEditedEvent)
         {
-            SiteId = editedEvent.SiteId;
-            Date = editedEvent.SpeedClaimedDate;
-            SpeedInMilesPerHour = editedEvent.SpeedInMilesPerHour;
-            Notes = editedEvent.Notes;
-            WitnessName = editedEvent.WitnessName;
-            PilotName = editedEvent.PilotName;
-            SiteName = editedEvent.SiteName;
-            SiteLocation = editedEvent.SiteLocation;
-            SiteCountryName = editedEvent.SiteCountryName;
-            AircraftName = editedEvent.AircraftName;
+            SiteId = speedClaimEditedEvent.SiteId;
+            Date = speedClaimEditedEvent.SpeedClaimedDate;
+            SpeedInMilesPerHour = speedClaimEditedEvent.SpeedInMilesPerHour;
+            Notes = speedClaimEditedEvent.Notes;
+            WitnessName = speedClaimEditedEvent.WitnessName;
+            PilotId = speedClaimEditedEvent.PilotId;
+            PilotName = speedClaimEditedEvent.PilotName;
+            SiteName = speedClaimEditedEvent.SiteName;
+            SiteLocation = speedClaimEditedEvent.SiteLocation;
+            SiteCountryName = speedClaimEditedEvent.SiteCountryName;
+            AircraftName = speedClaimEditedEvent.AircraftName;
+            AircraftId = speedClaimEditedEvent.AircraftId;
         }
 
     }

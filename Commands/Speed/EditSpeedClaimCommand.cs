@@ -50,7 +50,7 @@ namespace Commands.Speed
             if (!DocumentSession.Exists<Domain.Model.Site>(SiteId))
                 throw new BusinessRuleValidationException("Site cannot be found. ");
 
-            if (!DocumentSession.Exists<Aircraft>(AircraftId))
+            if (!DocumentSession.Exists<Domain.Model.Aircraft>(AircraftId))
                 throw new BusinessRuleValidationException("Airctaft cannot be found. ");
 
             if (DocumentSession.Load<Domain.Model.Speed>(Id).IsVerified)
@@ -63,12 +63,12 @@ namespace Commands.Speed
 
             @event.PilotName = DocumentSession.Query<Person>().Single(a => a.Id == PilotId).UserName;
             @event.WitnessName = DocumentSession.Query<Person>().Single(a => a.Id == WitnessId).UserName;
-            @event.AircraftName = DocumentSession.Query<Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
+            @event.AircraftName = DocumentSession.Query<Domain.Model.Aircraft>().Single(a => a.Id == AircraftId).AircraftName;
 
             var site = DocumentSession.Query<Domain.Model.Site>().Single(a => a.Id == SiteId);
             @event.SiteName = site.SiteName;
             @event.SiteLocation = site.Location;
-            @event.SiteCountryName = DocumentSession.Query<Country>().Single(a => a.Id == site.CountryId).CountryName;
+            @event.SiteCountryName = DocumentSession.Query<Domain.Model.Country>().Single(a => a.Id == site.CountryId).CountryName;
 
             DocumentSession.Events.Append(Id, @event);
 

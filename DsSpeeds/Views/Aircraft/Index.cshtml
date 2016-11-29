@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Read.Models.PersonReadModel>
+﻿@model IEnumerable<Read.Models.AircraftReadModel>
 
 @{
-    ViewBag.Title = "All Sites";
+    ViewBag.Title = "All Aircraft";
 }
 
-<h2>All People</h2>
+<h2>All Aircraft</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PersonName)
+            @Html.DisplayNameFor(model => model.AircraftName)
         </th>
         <th>
             Best Speed
@@ -23,7 +23,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.PersonName)
+            @Html.DisplayFor(modelItem => item.AircraftName)
         </td>
         <td>
             @{

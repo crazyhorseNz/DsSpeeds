@@ -8,12 +8,12 @@ namespace Read.Models
     {
         public PersonReadModel()
         {
-            AllVerifiedSiteSpeeds = new List<PersonSpeedReadModel>();
+            AllVerifiedSpeeds = new List<PersonSpeedReadModel>();
         }
 
         public string PersonName { get; set; }
 
-        public List<PersonSpeedReadModel> AllVerifiedSiteSpeeds { get; set; }
+        public List<PersonSpeedReadModel> AllVerifiedSpeeds { get; set; }
 
         public void Apply(PersonCreated createdEvent)
         {

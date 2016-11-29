@@ -1,5 +1,8 @@
 ﻿using System;
 using AutoMapper;
+using Commands.Aircraft;
+using Commands.Country;
+using Commands.People;
 using Commands.Site;
 using Commands.Speed;
 using Domain.Events;

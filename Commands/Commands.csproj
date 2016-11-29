@@ -76,9 +76,9 @@
   <ItemGroup>
     <Compile Include="AutoMapper\CommandsToEvents.cs" />
     <Compile Include="BaseCommand.cs" />
-    <Compile Include="CreateAircraftCommand.cs" />
-    <Compile Include="CreatePersonCommand.cs" />
-    <Compile Include="CreateCountryCommand.cs" />
+    <Compile Include="Aircraft\CreateAircraftCommand.cs" />
+    <Compile Include="People\CreatePersonCommand.cs" />
+    <Compile Include="Country\CreateCountryCommand.cs" />
     <Compile Include="Site\EditSiteCommand.cs" />
     <Compile Include="Site\CreateSiteCommand.cs" />
     <Compile Include="Speed\EditSpeedClaimCommand.cs" />

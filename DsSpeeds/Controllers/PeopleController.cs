@@ -29,7 +29,7 @@ namespace DsSpeeds.Controllers
 
             var model = new SpeedListModel
             {
-                SpeedList = personData.AllVerifiedSiteSpeeds
+                SpeedList = personData.AllVerifiedSpeeds
                     .Select(summary => new SpeedReadModel
                     {
                         Id = summary.SpeedId,

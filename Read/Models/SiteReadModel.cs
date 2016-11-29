@@ -8,7 +8,7 @@ namespace Read.Models
     {
         public SiteReadModel()
         {
-            AllVerifiedSiteSpeeds = new List<SiteSpeedReadModel>();
+            AllVerifiedSpeeds = new List<SiteSpeedReadModel>();
         }
 
         public string SiteName { get; set; }
@@ -17,7 +17,7 @@ namespace Read.Models
 
         public string CountryName { get; set; }
 
-        public List<SiteSpeedReadModel> AllVerifiedSiteSpeeds { get; set; }
+        public List<SiteSpeedReadModel> AllVerifiedSpeeds { get; set; }
 
         public void Apply(SiteCreated createdEvent)
         {

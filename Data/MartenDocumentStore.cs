@@ -47,6 +47,7 @@ namespace Data
                     store.Events.InlineProjections.AggregateStreamsWith<SiteReadModel>();
                     store.Events.InlineProjections.AggregateStreamsWith<SpeedReadModel>();
                     store.Events.InlineProjections.AggregateStreamsWith<PersonReadModel>();
+                    store.Events.InlineProjections.AggregateStreamsWith<AircraftReadModel>();
                 };
             }
         }

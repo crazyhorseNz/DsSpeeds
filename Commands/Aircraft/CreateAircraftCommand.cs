@@ -1,11 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Domain.Events;
-using Domain.Model;
 using Marten;
 using Shared;
-using System;
 
-namespace Commands
+namespace Commands.Aircraft
 {
     public class CreateAircraftCommand : BaseCommand, ICommand
     {
@@ -34,7 +33,7 @@ namespace Commands
         {
             var @event = Mapper.Map<AircraftCreated>(this);
 
-            var id = DocumentSession.Events.StartStream<Aircraft>(@event);
+            var id = DocumentSession.Events.StartStream<Domain.Model.Aircraft>(@event);
 
             DocumentSession.SaveChanges();
 

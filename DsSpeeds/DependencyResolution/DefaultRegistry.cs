@@ -16,6 +16,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Commands;
+using Commands.Aircraft;
+using Commands.Country;
+using Commands.People;
 using Commands.Site;
 using Commands.Speed;
 using Data;
@@ -67,6 +70,7 @@ namespace DsSpeeds.DependencyResolution
                     RegisterReadModel<PersonReadModel>(expr);
                     RegisterReadModel<SpeedReadModel>(expr);
                     RegisterReadModel<SiteReadModel>(expr);
+                    RegisterReadModel<AircraftReadModel>(expr);
                 });
 
             Policies.SetAllProperties(y => y.OfType<IDocumentSession>());

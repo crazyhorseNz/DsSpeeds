@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Domain.Events;
 using Domain.Model;
 using Marten;
 using Shared;
-using System;
 
-namespace Commands
+namespace Commands.People
 {
     public class CreatePersonCommand : BaseCommand, ICommand
     {

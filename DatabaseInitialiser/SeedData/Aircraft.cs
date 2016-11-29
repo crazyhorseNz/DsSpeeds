@@ -1,4 +1,5 @@
 ﻿using Commands;
+using Commands.Aircraft;
 using Marten;
 
 namespace DatabaseInitialiser.SeedData

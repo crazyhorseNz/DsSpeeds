@@ -1,11 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Domain.Events;
-using Domain.Model;
 using Marten;
 using Shared;
-using System;
 
-namespace Commands
+namespace Commands.Country
 {
     public class CreateCountryCommand : BaseCommand, ICommand
     {
@@ -28,7 +27,7 @@ namespace Commands
         {
             var @event = Mapper.Map<CountryCreated>(this);
 
-            var countryId = DocumentSession.Events.StartStream<Country>(@event);
+            var countryId = DocumentSession.Events.StartStream<Domain.Model.Country>(@event);
 
             DocumentSession.SaveChanges();
 
