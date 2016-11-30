@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using AutoMapper;
 using Data.Queries;
@@ -20,22 +21,27 @@ namespace Commands.Speed
         {
         }
 
-        public DateTime SpeedClaimedDate { get; set; }
+        [DisplayName("Date of flight")]
+        public DateTime SpeedClaimedDate { get; set; } = DateTime.Today.Date;
 
+        [DisplayName("Max speed of flight (MPH)")]
         public long SpeedInMilesPerHour { get; set; }
 
         public string Notes { get; set; }
 
+        [DisplayName("Pilot")]
         public Guid PilotId { get; set; }
 
+        [DisplayName("Witness")]
         public Guid WitnessId { get; set; }
 
+        [DisplayName("Site")]
         public Guid SiteId { get; set; }
 
+        [DisplayName("Aircraft")]
         public Guid AircraftId { get; set; }
 
         public void Validate()
-
         {
             if (!DocumentSession.Exists<Person>(PilotId))
                 throw new BusinessRuleValidationException("Pilot cannot be found. ");

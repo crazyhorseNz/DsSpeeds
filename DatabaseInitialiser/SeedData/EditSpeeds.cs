@@ -12,25 +12,19 @@ namespace DatabaseInitialiser.SeedData
         {
             var pilotId = session.Query<Person>().First().Id;
             var speed = session.Query<Speed>().First(s => s.PilotId == pilotId);
-
-            var planeId = session.Query<Domain.Model.Aircraft>().First().Id;
-            var witnessId = session.Query<Person>().First().Id;
-            var ngaio = session.Query<Site>().Single(s => s.SiteName == "Long Gully").Id;
+            var longGully = session.Query<Site>().Single(s => s.SiteName == "Long Gully").Id;
 
             new EditSpeedClaimCommand(session)
             {
                 Id = speed.Id,
-                SpeedClaimedDate = DateTime.Today.AddYears(-16),
-                Notes = "Im gunna update these notes!",
-                SpeedInMilesPerHour = 666,
-                AircraftId = planeId,
-                PilotId = pilotId,
-                WitnessId = witnessId,
-                SiteId = ngaio
+                SpeedClaimedDate = DateTime.Today.AddYears(-16), // change the claimed date
+                Notes = "Im gunna update these notes!", // change the notes.
+                SpeedInMilesPerHour = speed.SpeedInMilesPerHour,
+                AircraftId = speed.AircraftId,
+                PilotId = speed.PilotId,
+                WitnessId = speed.WitnessId,
+                SiteId = longGully // change the location to Long Gully.
             }.Execute();
-
-
-
         }
     }
 }

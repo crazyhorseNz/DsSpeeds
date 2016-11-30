@@ -36,7 +36,6 @@ namespace Commands.Speed
         public Guid AircraftId { get; set; }
 
         public void Validate()
-
         {
             if (!DocumentSession.Exists<Domain.Model.Speed>(Id))
                 throw new BusinessRuleValidationException("Speed cannot be found. ");
@@ -68,6 +67,7 @@ namespace Commands.Speed
             var site = DocumentSession.Query<Domain.Model.Site>().Single(a => a.Id == SiteId);
             @event.SiteName = site.SiteName;
             @event.SiteLocation = site.Location;
+            @event.CountryId = site.CountryId;
             @event.SiteCountryName = DocumentSession.Query<Domain.Model.Country>().Single(a => a.Id == site.CountryId).CountryName;
 
             DocumentSession.Events.Append(Id, @event);
