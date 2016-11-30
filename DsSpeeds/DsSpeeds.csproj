@@ -250,6 +250,7 @@
     <Compile Include="Models\Site\SiteModel.cs" />
     <Compile Include="Models\Speed\SpeedClaimModel.cs" />
     <Compile Include="Models\SpeedListModel.cs" />
+    <Compile Include="Models\Speed\SpeedDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

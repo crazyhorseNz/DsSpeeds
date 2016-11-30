@@ -46,7 +46,15 @@ namespace DsSpeeds.Controllers
         {
             var recSpeed = DocumentSession.Load<SpeedReadModel>(id);
 
-            return View("Details", recSpeed);
+            var model = new SpeedDetailModel(recSpeed);
+
+            var allEvents = DocumentSession.Events.FetchStream(id)
+                .Select(e => $"{e.Timestamp.Date} - {e.Data.GetType().Name}" )
+                .ToList();
+
+            model.SpeedHistory = allEvents;
+
+            return View("Details", model);
         }
 
 
@@ -100,7 +108,7 @@ namespace DsSpeeds.Controllers
 
             ExecuteCommand(command);
 
-            return RedirectToAction("AllVerified");
+            return RedirectToAction("Details", new { id });
         }
 
     }

@@ -30,6 +30,7 @@ namespace Commands.AutoMapper
                 .ForMember(e => e.SiteName, opt => opt.Ignore())
                 .ForMember(e => e.SiteLocation, opt => opt.Ignore())
                 .ForMember(e => e.SiteCountryName, opt => opt.Ignore())
+                .ForMember(e => e.CountryId, opt => opt.Ignore())
                 .ForMember(e => e.AircraftName, opt => opt.Ignore());
 
             CreateMap<EditSpeedClaimCommand, SpeedClaimEdited>()
@@ -38,9 +39,11 @@ namespace Commands.AutoMapper
                 .ForMember(e => e.SiteName, opt => opt.Ignore())
                 .ForMember(e => e.SiteLocation, opt => opt.Ignore())
                 .ForMember(e => e.SiteCountryName, opt => opt.Ignore())
+                .ForMember(e => e.CountryId, opt => opt.Ignore())
                 .ForMember(e => e.AircraftName, opt => opt.Ignore());
 
-            CreateMap<VerifySpeedClaimCommand, SpeedClaimVerified>();
+            CreateMap<VerifySpeedClaimCommand, SpeedClaimVerified>()
+                .ForMember(e => e.SpeedVerifiedDate, opt => opt.Ignore());
 
             CreateMap<DeleteRecordedSpeedCommand, RecordedSpeedDeleted>()
                 .ForMember(e => e.SpeedDeletionDate, opt => opt.ResolveUsing(command => DateTime.Today))

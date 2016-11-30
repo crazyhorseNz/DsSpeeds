@@ -3,6 +3,8 @@ using Domain.Events.Site;
 using Marten;
 using Shared;
 using System;
+using Data.Queries;
+using Shared.Exceptions;
 
 namespace Commands.Site
 {
@@ -25,6 +27,8 @@ namespace Commands.Site
 
         public void Validate()
         {
+            if (!DocumentSession.Exists<Domain.Model.Country>(CountryId))
+                throw new BusinessRuleValidationException("Country does not exit. ");
         }
 
         public Guid? Execute()
@@ -32,6 +36,8 @@ namespace Commands.Site
             var @event = Mapper.Map<SiteCreated>(this);
 
             var siteId = DocumentSession.Events.StartStream<Domain.Model.Site>(@event);
+
+            @event.CountryName = DocumentSession.Load<Domain.Model.Country>(CountryId).CountryName;
 
             DocumentSession.SaveChanges();
 

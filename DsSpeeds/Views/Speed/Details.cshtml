@@ -1,4 +1,4 @@
-﻿@model Read.Models.SpeedReadModel
+﻿@model DsSpeeds.Models.Speed.SpeedDetailModel
 
 @{
     ViewBag.Title = "Details";
@@ -7,91 +7,92 @@
 <h2>Details</h2>
 
 <div>
-    <h4>@Model.SpeedInMilesPerHour MPH by @Model.PilotName</h4>
+    <h4>@Model.SpeedData.SpeedInMilesPerHour MPH by @Model.SpeedData.PilotName</h4>
     <hr />
     <dl class="dl-horizontal">
         
         <dt>
-            @Html.DisplayNameFor(model => model.PilotName)
+            @Html.DisplayNameFor(model => Model.SpeedData.PilotName)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.PilotName)
+            @Html.DisplayFor(model => Model.SpeedData.PilotName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => Model.SpeedData.Date)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => Model.SpeedData.Date)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SpeedInMilesPerHour)
+            @Html.DisplayNameFor(model => Model.SpeedData.SpeedInMilesPerHour)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.SpeedInMilesPerHour)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AircraftName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AircraftName)
+            @Html.DisplayFor(model => Model.SpeedData.SpeedInMilesPerHour)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.WitnessName)
+            @Html.DisplayNameFor(model => Model.SpeedData.AircraftName)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.WitnessName)
+            @Html.DisplayFor(model => Model.SpeedData.AircraftName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsVerified)
+            @Html.DisplayNameFor(model => Model.SpeedData.WitnessName)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.IsVerified)
+            @Html.DisplayFor(model => Model.SpeedData.WitnessName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SiteName)
+            @Html.DisplayNameFor(model => Model.SpeedData.IsVerified)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.SiteName)
+            @Html.DisplayFor(model => Model.SpeedData.IsVerified)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SiteLocation)
+            @Html.DisplayNameFor(model => Model.SpeedData.SiteName)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.SiteLocation)
+            @Html.DisplayFor(model => Model.SpeedData.SiteName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SiteCountryName)
+            @Html.DisplayNameFor(model => Model.SpeedData.SiteLocation)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.SiteCountryName)
+            @Html.DisplayFor(model => Model.SpeedData.SiteLocation)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Notes)
+            @Html.DisplayNameFor(model => Model.SpeedData.SiteCountryName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Notes)
+            @Html.DisplayFor(model => Model.SpeedData.SiteCountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => Model.SpeedData.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => Model.SpeedData.Notes)
         </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    @Html.ActionLink("Edit", "Edit", new {id = Model.SpeedData.Id})
 </p>
+
+<hr/>
+
+<h4>History</h4>
+<ul>
+    @foreach (var @event in Model.SpeedHistory)
+    {
+        <li>@(@event)</li>
+    }
+</ul>
+
