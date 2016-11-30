@@ -240,8 +240,11 @@
     </Compile>
     <Compile Include="Infrastructure\Ioc\StructureMapRegistry.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\People\PersonModel.cs" />
+    <Compile Include="Models\Aircraft\AircraftModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Site\SiteModel.cs" />
     <Compile Include="Models\Speed\SpeedClaimModel.cs" />
     <Compile Include="Models\SpeedListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

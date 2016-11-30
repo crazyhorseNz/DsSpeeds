@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DsSpeeds.Models.People;
 using Marten;
 using Read.Models;
 using StructureMap;
+using System;
 using System.Linq;
 using System.Web.Mvc;
-using DsSpeeds.Models;
 
 namespace DsSpeeds.Controllers
 {
@@ -14,8 +13,7 @@ namespace DsSpeeds.Controllers
         public PeopleController(IDocumentSession session, IContainer container) : base(session, container)
         {
         }
-
-        // GET: Site
+        
         public ActionResult Index()
         {
             var allSites = DocumentSession.Query<PersonReadModel>().ToList();
@@ -25,24 +23,9 @@ namespace DsSpeeds.Controllers
 
         public ActionResult Details(Guid id)
         {
-            var personData = DocumentSession.Load<PersonReadModel>(id);
+            var personReadModel = DocumentSession.Load<PersonReadModel>(id);
 
-            var model = new SpeedListModel
-            {
-                SpeedList = personData.AllVerifiedSpeeds
-                    .Select(summary => new SpeedReadModel
-                    {
-                        Id = summary.SpeedId,
-                        Date = summary.Date,
-                        SpeedInMilesPerHour = summary.SpeedInMilesPerHour,
-                        AircraftName = summary.AircraftName,
-                        PilotName = personData.PersonName,
-                        SiteName = summary.SiteName,
-                        SiteLocation = summary.SiteLocation,
-                        SiteCountryName = summary.SiteCountryName,
-                        IsVerified = true
-                    }).ToList()
-            };
+            var model = new PersonModel(personReadModel);
 
             return View("Details", model);
         }

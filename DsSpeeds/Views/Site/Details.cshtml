@@ -1,9 +1,20 @@
-﻿@model DsSpeeds.Models.SpeedListModel
+﻿@model DsSpeeds.Models.Site.SiteModel
 
 @{
     ViewBag.Title = "Site Details";
 }
 
-<h2>Site Details</h2>
+<h2>@Html.DisplayFor(m => m.ReadModel.SiteName)</h2>
 
-@Html.Partial("SpeedList", Model)
+<div>
+    @Html.DisplayFor(m => m.ReadModel.Location)
+</div>
+<div>
+    @Html.DisplayFor(m => m.ReadModel.CountryName)
+</div>
+
+<br />
+<br />
+
+
+@Html.Partial("SpeedList", Model.SpeedList)

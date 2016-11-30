@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DsSpeeds.Models.Site;
 using Marten;
 using Read.Models;
 using StructureMap;
+using System;
 using System.Linq;
 using System.Web.Mvc;
-using DsSpeeds.Models;
 
 namespace DsSpeeds.Controllers
 {
@@ -27,22 +26,7 @@ namespace DsSpeeds.Controllers
         {
             var siteData = DocumentSession.Load<SiteReadModel>(id);
 
-            var model = new SpeedListModel
-            {
-                SpeedList = siteData.AllVerifiedSpeeds
-                    .Select(summary => new SpeedReadModel
-                    {
-                        Id = summary.SpeedId,
-                        Date = summary.Date,
-                        SpeedInMilesPerHour = summary.SpeedInMilesPerHour,
-                        AircraftName = summary.AircraftName,
-                        PilotName = summary.PilotName,
-                        SiteName = siteData.SiteName,
-                        SiteLocation = siteData.Location,
-                        SiteCountryName = siteData.CountryName,
-                        IsVerified = true
-                    }).ToList()
-            };
+            var model = new SiteModel(siteData);
 
             return View("Details", model);
         }

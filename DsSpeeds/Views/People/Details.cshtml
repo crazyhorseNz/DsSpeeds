@@ -1,9 +1,15 @@
-﻿@model DsSpeeds.Models.SpeedListModel
+﻿@model DsSpeeds.Models.People.PersonModel
 
 @{
     ViewBag.Title = "Person Details";
 }
 
-<h2>Person Details</h2>
+<h2>@(Model.ReadModel.FirstName) @(Model.ReadModel.LastName)</h2>
 
-@Html.Partial("SpeedList", Model)
+<ul>
+    <li>UserName: @(Model.ReadModel.UserName)</li>
+    <li>Name: @(Model.ReadModel.FirstName) @(Model.ReadModel.LastName)</li>
+</ul>
+
+
+@Html.Partial("SpeedList", Model.SpeedList)

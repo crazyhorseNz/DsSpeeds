@@ -1,9 +1,16 @@
-﻿@model DsSpeeds.Models.SpeedListModel
+﻿@model DsSpeeds.Models.Aircraft.AircraftModel
 
 @{
     ViewBag.Title = "Aircraft Details";
 }
 
-<h2>Aircraft Details</h2>
+<h2>@(Model.ReadModel.AircraftName)</h2>
 
-@Html.Partial("SpeedList", Model)
+<ul>
+    <li>Name: @(Model.ReadModel.AircraftName)</li>
+    <li>Made by: @(Model.ReadModel.PlaneManufacturer)</li>
+    <li>Span: @(Model.ReadModel.WingSpanInInches)</li>
+    <li>Is Foam: @(Model.ReadModel.IsFoam)</li>
+</ul>
+
+@Html.Partial("SpeedList", Model.SpeedList)

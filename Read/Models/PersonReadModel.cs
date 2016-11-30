@@ -11,13 +11,19 @@ namespace Read.Models
             AllVerifiedSpeeds = new List<PersonSpeedReadModel>();
         }
 
-        public string PersonName { get; set; }
+        public string UserName { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public List<PersonSpeedReadModel> AllVerifiedSpeeds { get; set; }
 
         public void Apply(PersonCreated createdEvent)
         {
-            PersonName = createdEvent.UserName;
+            UserName = createdEvent.UserName;
+            FirstName = createdEvent.FirstName;
+            LastName = createdEvent.LastName;
         }
 
 
