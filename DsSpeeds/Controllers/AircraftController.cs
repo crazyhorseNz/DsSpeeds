@@ -17,7 +17,9 @@ namespace DsSpeeds.Controllers
         // GET: Site
         public ActionResult Index()
         {
-            var allSites = DocumentSession.Query<AircraftReadModel>().ToList();
+            var allSites = DocumentSession.Query<AircraftReadModel>()
+                .OrderBy(rm => rm.AircraftName)
+                .ToList();
 
             return View("Index", allSites);
         }

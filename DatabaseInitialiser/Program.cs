@@ -26,10 +26,10 @@ namespace DatabaseInitialiser
                 new People(),
                 new Sites(),
                 new Aircraft(),
-                new Speeds(),
-                new VerifyAndRejectSpeedClaims(), 
-                new UpdateASite(), 
-                new EditSpeeds(), 
+                //new Speeds(),
+                //new VerifyAndRejectSpeedClaims(), 
+                //new UpdateASite(), 
+                //new EditSpeeds(), 
             };
 
             using (var session = MartenDocumentStore.Store.LightweightSession())

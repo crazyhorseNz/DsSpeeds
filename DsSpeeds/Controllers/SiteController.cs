@@ -17,7 +17,9 @@ namespace DsSpeeds.Controllers
         // GET: Site
         public ActionResult Index()
         {
-            var allSites = DocumentSession.Query<SiteReadModel>().ToList();
+            var allSites = DocumentSession.Query<SiteReadModel>()
+                .OrderBy(rm => rm.SiteName)
+                .ToList();
 
             return View("Index", allSites);
         }

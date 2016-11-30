@@ -16,7 +16,9 @@ namespace DsSpeeds.Controllers
         
         public ActionResult Index()
         {
-            var allCountries = DocumentSession.Query<CountryReadModel>().ToList();
+            var allCountries = DocumentSession.Query<CountryReadModel>()
+                .OrderBy(rm => rm.CountryName)
+                .ToList();
 
             return View("Index", allCountries);
         }

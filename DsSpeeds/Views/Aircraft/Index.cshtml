@@ -20,7 +20,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.AircraftName)
@@ -29,7 +30,7 @@
             @{
                 if (item.AllVerifiedSpeeds == null || item.AllVerifiedSpeeds.Count < 1)
                 {
-                    @("No verified speeds")
+                    @("[No speeds]")
                 }
                 else
                 {

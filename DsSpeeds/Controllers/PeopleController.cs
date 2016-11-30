@@ -16,7 +16,9 @@ namespace DsSpeeds.Controllers
         
         public ActionResult Index()
         {
-            var allSites = DocumentSession.Query<PersonReadModel>().ToList();
+            var allSites = DocumentSession.Query<PersonReadModel>()
+                .OrderBy(rm => rm.UserName)
+                .ToList();
 
             return View("Index", allSites);
         }
