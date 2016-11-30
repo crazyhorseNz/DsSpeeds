@@ -208,6 +208,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\CountryController.cs" />
     <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\AircraftController.cs" />
     <Compile Include="ApiControllers\PeopleController.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\AircraftController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
@@ -240,6 +242,7 @@
     </Compile>
     <Compile Include="Infrastructure\Ioc\StructureMapRegistry.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Country\CountryModel.cs" />
     <Compile Include="Models\People\PersonModel.cs" />
     <Compile Include="Models\Aircraft\AircraftModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -299,12 +302,6 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Speed\Create.cshtml" />
@@ -319,6 +316,8 @@
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\Aircraft\Details.cshtml" />
     <Content Include="Views\Aircraft\Index.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

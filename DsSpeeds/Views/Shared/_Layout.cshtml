@@ -24,18 +24,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Speeds<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Enter Speed", "Create", "Speed")</li>
-                            <li>@Html.ActionLink("All", "AllVerified", "Speed")</li>
-                            <li>@Html.ActionLink("Unverified", "AllUnverified", "Speed")</li>
-                        </ul>
-                    </li>
+                    <li>@Html.ActionLink("All Speeds", "AllVerified", "Speed")</li>
+                    <li>@Html.ActionLink("Enter a Speed", "Create", "Speed")</li>
+                    <li>@Html.ActionLink("Unverified Speeds", "AllUnverified", "Speed")</li>
                     <li>@Html.ActionLink("People", "Index", "People")</li>
                     <li>@Html.ActionLink("Aircraft", "Index", "Aircraft")</li>
                     <li>@Html.ActionLink("Sites", "Index", "Site")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Countries", "Index", "Country")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

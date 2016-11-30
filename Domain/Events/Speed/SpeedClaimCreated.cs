@@ -30,5 +30,7 @@ namespace Domain.Events.Speed
         public string SiteCountryName { get; set; }
 
         public string AircraftName { get; set; }
+
+        public Guid CountryId { get; set; }
     }
 }

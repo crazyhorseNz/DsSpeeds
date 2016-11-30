@@ -29,12 +29,13 @@ namespace Read.Models
 
         public string SiteLocation { get; set; }
 
+        public Guid CountryId { get; set; }
+
         public string SiteCountryName { get; set; }
 
         public Guid AircraftId { get; set; }
 
         public string AircraftName { get; set; }
-
 
         public void Apply(SpeedClaimCreated speedClaimCreatedEvent)
         {
@@ -50,6 +51,7 @@ namespace Read.Models
             SiteCountryName = speedClaimCreatedEvent.SiteCountryName;
             AircraftName = speedClaimCreatedEvent.AircraftName;
             AircraftId = speedClaimCreatedEvent.AircraftId;
+            CountryId = speedClaimCreatedEvent.CountryId;
         }
 
         public void Apply(SpeedClaimVerified speedClaimVerifiedEvent)
@@ -72,6 +74,7 @@ namespace Read.Models
             SiteCountryName = speedClaimEditedEvent.SiteCountryName;
             AircraftName = speedClaimEditedEvent.AircraftName;
             AircraftId = speedClaimEditedEvent.AircraftId;
+            CountryId = speedClaimEditedEvent.CountryId;
         }
 
     }

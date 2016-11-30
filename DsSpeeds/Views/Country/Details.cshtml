@@ -1,0 +1,9 @@
+﻿@model DsSpeeds.Models.Country.CountryModel
+
+@{
+    ViewBag.Title = "Country Details";
+}
+
+<h2>All speeds for @(Model.ReadModel.CountryName)</h2>
+
+@Html.Partial("SpeedList", Model.SpeedList)

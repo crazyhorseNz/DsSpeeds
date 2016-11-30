@@ -10,6 +10,15 @@
     <h4>@Model.SpeedInMilesPerHour MPH by @Model.PilotName</h4>
     <hr />
     <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.PilotName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PilotName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>
@@ -26,12 +35,13 @@
             @Html.DisplayFor(model => model.SpeedInMilesPerHour)
         </dd>
 
+
         <dt>
-            @Html.DisplayNameFor(model => model.PilotName)
+            @Html.DisplayNameFor(model => model.AircraftName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PilotName)
+            @Html.DisplayFor(model => model.AircraftName)
         </dd>
 
         <dt>

@@ -37,6 +37,7 @@ namespace Commands.Speed
             PatchSiteSpeeds();
             PatchPersonSpeeds();
             PatchAircraftSpeeds();
+            PatchCountrySpeeds();
 
             DocumentSession.SaveChanges();
 
@@ -95,6 +96,25 @@ namespace Commands.Speed
 
             DocumentSession.Patch<AircraftReadModel>(speedReadModel.AircraftId)
                 .Append(aircraftReadModel => aircraftReadModel.AllVerifiedSpeeds, aircraftSpeedModel);
+        }
+
+        private void PatchCountrySpeeds()
+        {
+            var speedReadModel = DocumentSession.Load<SpeedReadModel>(Id);
+
+            var countrySpeedToAdd = new CountryReadModel.CountrySpeedReadModel
+            {
+                SpeedId = Id,
+                Date = speedReadModel.Date,
+                PilotName = speedReadModel.PilotName,
+                SpeedInMilesPerHour = speedReadModel.SpeedInMilesPerHour,
+                SiteName = speedReadModel.SiteName,
+                SiteLocation = speedReadModel.SiteLocation,
+                AircraftName = speedReadModel.AircraftName,
+            };
+
+            DocumentSession.Patch<CountryReadModel>(speedReadModel.CountryId)
+                .Append(countryReadModel => countryReadModel.AllVerifiedSpeeds, countrySpeedToAdd);
         }
     }
 }
