@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map'
 
-import { Speed } from './speed';
+//import { Speed } from './speed';
 
 @Injectable()
 export class SpeedService {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Speed } from './speed';
+//import { Speed } from './speed';
 
 @Component({
     moduleId: module.id,
@@ -9,5 +9,5 @@ import { Speed } from './speed';
 
 export class SpeedListComponent {
     @Input()
-    speeds: Speed[];
+    speeds: Object[];
 }

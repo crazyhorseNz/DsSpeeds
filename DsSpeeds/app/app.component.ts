@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 
-import { Speed } from './speed';
+//import { Speed } from './speed';
 import { SpeedListComponent } from './speedlist.component';
 import { SpeedService } from './speed.service';
 
@@ -22,22 +22,18 @@ export class Hero {
 
 @Injectable()
 export class AppComponent implements OnInit{
-    public speeds: Speed[];
+    public speeds: Object[];
     constructor(private speedService: SpeedService) {
     }
 
     ngOnInit() {
         this.speedService.getSpeeds()
             .subscribe(speeds => {
-                console.log('toMap' + speeds);
+                console.log(speeds);
                 this.speeds = speeds; 
-                console.log('mapped' + this.speeds);
+                console.log(this.speeds);
             },
             error => console.log('ERROR: ' + error));
-
-        //for (let entry in this.speeds) {
-        //    console.log(entry); // 1, "string", false
-        //}
 
     }
 

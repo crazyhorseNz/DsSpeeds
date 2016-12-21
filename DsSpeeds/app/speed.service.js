@@ -12,6 +12,7 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/toPromise");
 require("rxjs/add/operator/map");
+//import { Speed } from './speed';
 var SpeedService = (function () {
     function SpeedService(http) {
         this.http = http;

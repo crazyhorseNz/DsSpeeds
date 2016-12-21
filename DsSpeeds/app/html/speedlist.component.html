@@ -1,15 +1,23 @@
 ﻿
-<table class="speed-table">
+<table class="speed-table" style="width: 100%">
     <thead>
         <tr>
-            <td>Date</td>
-            <td>Speed</td>
+            <th>Date</th>
+            <th>Speed</th>
+            <th>Aircraft</th>
+            <th>Pilot</th>
+            <th>Site</th>
+            <th>Location</th>
         </tr>
     </thead>
     <tbody>
     <tr *ngFor="let speed of speeds">
-        <td>{{speed.Date}}</td>
-        <td>{{speed.SpeedInMilesPerHour}}</td>
+        <td>{{speed.date | date}}</td>
+        <td>{{speed.speedInMilesPerHour}}</td>
+        <td>{{speed.aircraftName}}</td>
+        <td>{{speed.pilotName}}</td>
+        <td>{{speed.siteName}}</td>
+        <td>{{speed.siteLocation}}</td>
     </tr>
     </tbody>
 </table>

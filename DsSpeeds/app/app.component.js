@@ -24,13 +24,10 @@ var AppComponent = (function () {
         var _this = this;
         this.speedService.getSpeeds()
             .subscribe(function (speeds) {
-            console.log('toMap' + speeds);
+            console.log(speeds);
             _this.speeds = speeds;
-            console.log('mapped' + _this.speeds);
+            console.log(_this.speeds);
         }, function (error) { return console.log('ERROR: ' + error); });
-        //for (let entry in this.speeds) {
-        //    console.log(entry); // 1, "string", false
-        //}
     };
     return AppComponent;
 }());
