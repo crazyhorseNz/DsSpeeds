@@ -372,6 +372,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app-routing.module.ts" />
+    <TypeScriptCompile Include="app\all-speeds.component.ts" />
     <TypeScriptCompile Include="app\speed.service.ts" />
     <TypeScriptCompile Include="app\rxjs-extensions.ts" />
     <TypeScriptCompile Include="app\speed-detail.component.ts" />

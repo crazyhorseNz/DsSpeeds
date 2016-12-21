@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -7,11 +8,12 @@ import { ActivatedRoute, Params } from '@angular/router';
    // templateUrl: './html/speedlist.component.html'
     template: `<p>details go here</p>`
 })
+@Injectable()
 export class SpeedDetailComponent implements OnInit{
     constructor(private route: ActivatedRoute, private location: Location) { 
+        console.log('YEs!');
     }
 
-    //@Input()
     speed: Object;
 
     ngOnInit(): void {

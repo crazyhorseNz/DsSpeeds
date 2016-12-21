@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-//import { Speed } from './speed';
 
 @Component({
     moduleId: module.id,

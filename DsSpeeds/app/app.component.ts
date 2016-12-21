@@ -1,40 +1,35 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-//import { Speed } from './speed';
-import { SpeedListComponent } from './speedlist.component';
-import { SpeedService } from './speed.service';
-
-export class Hero {
-    id: number;
-    name: string;
-}
 
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
     template: `
     <h1>DS Speeds</h1>
-    <h2>All Speeds</h2>
-    <div>
-        <speedlist [speeds]="speeds"></speedlist>
-    </div>
+    <nav>
+      <a routerLink="/all" routerLinkActive="active">All</a>
+      <a routerLink="/detail/1" routerLinkActive="active">First</a>
+      <a routerLink="/detail/2" routerLinkActive="active">Second</a>
+    </nav>
+    <router-outlet></router-outlet>
     `
 })
+//@Injectable()
+//export class AppComponent implements OnInit {
+export class AppComponent {
+    //public speeds: Object[];
+    //constructor(private speedService: SpeedService) {
+    //}
 
-@Injectable()
-export class AppComponent implements OnInit{
-    public speeds: Object[];
-    constructor(private speedService: SpeedService) {
-    }
+    //ngOnInit() {
+    //    this.speedService.getSpeeds()
+    //        .subscribe(speeds => {
+    //            console.log(speeds);
+    //            this.speeds = speeds; 
+    //            console.log(this.speeds);
+    //        },
+    //        error => console.log('ERROR: ' + error));
 
-    ngOnInit() {
-        this.speedService.getSpeeds()
-            .subscribe(speeds => {
-                console.log(speeds);
-                this.speeds = speeds; 
-                console.log(this.speeds);
-            },
-            error => console.log('ERROR: ' + error));
-
-    }
+    //}
 
 }

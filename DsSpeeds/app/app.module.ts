@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, Headers, Response } from '@angular/http';
+import { HttpModule} from '@angular/http';
 
-//import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SpeedService } from './speed.service';
 import { SpeedListComponent } from './speedlist.component';
-//import { SpeedDetailComponent } from './speed-detail.component';
+import { SpeedDetailComponent } from './speed-detail.component';
+import { AllSpeedsComponent } from './all-speeds.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        //AppRoutingModule,
+        AppRoutingModule,
     ],
     declarations: [
         AppComponent,
         SpeedListComponent, 
-        //SpeedDetailComponent
+        SpeedDetailComponent,
+        AllSpeedsComponent
     ],
     bootstrap: [AppComponent],
     providers: [SpeedService]
