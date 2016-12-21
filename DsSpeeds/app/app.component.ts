@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+
 import { Speed } from './speed';
 import { SpeedListComponent } from './speedlist.component';
 import { SpeedService } from './speed.service';
@@ -14,21 +15,30 @@ export class Hero {
     <h1>DS Speeds</h1>
     <h2>All Speeds</h2>
     <div>
-        <speedlist [speeds]="speeds">></speedlist>
+        <speedlist [speeds]="speeds"></speedlist>
     </div>
     `
 })
 
-export class AppComponent {
-    speeds: Speed[];
+@Injectable()
+export class AppComponent implements OnInit{
+    public speeds: Speed[];
     constructor(private speedService: SpeedService) {
-        this.speeds = speedService.getSpeeds();
     }
+
+    ngOnInit() {
+        this.speedService.getSpeeds()
+            .subscribe(speeds => {
+                console.log('toMap' + speeds);
+                this.speeds = speeds; 
+                console.log('mapped' + this.speeds);
+            },
+            error => console.log('ERROR: ' + error));
+
+        //for (let entry in this.speeds) {
+        //    console.log(entry); // 1, "string", false
+        //}
+
+    }
+
 }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

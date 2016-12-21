@@ -26,7 +26,7 @@ namespace DatabaseInitialiser
                 new People(),
                 new Sites(),
                 new Aircraft(),
-                //new Speeds(),
+                new Speeds(),
                 //new VerifyAndRejectSpeedClaims(), 
                 //new UpdateASite(), 
                 //new EditSpeeds(), 

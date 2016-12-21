@@ -19,21 +19,28 @@ exports.Hero = Hero;
 var AppComponent = (function () {
     function AppComponent(speedService) {
         this.speedService = speedService;
-        this.speeds = speedService.getSpeeds();
     }
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.speedService.getSpeeds()
+            .subscribe(function (speeds) {
+            console.log('toMap' + speeds);
+            _this.speeds = speeds;
+            console.log('mapped' + _this.speeds);
+        }, function (error) { return console.log('ERROR: ' + error); });
+        //for (let entry in this.speeds) {
+        //    console.log(entry); // 1, "string", false
+        //}
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n    <h1>DS Speeds</h1>\n    <h2>All Speeds</h2>\n    <div>\n        <speedlist [speeds]=\"speeds\">></speedlist>\n    </div>\n    "
+        template: "\n    <h1>DS Speeds</h1>\n    <h2>All Speeds</h2>\n    <div>\n        <speedlist [speeds]=\"speeds\"></speedlist>\n    </div>\n    "
     }),
+    core_1.Injectable(),
     __metadata("design:paramtypes", [speed_service_1.SpeedService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
 //# sourceMappingURL=app.component.js.map
