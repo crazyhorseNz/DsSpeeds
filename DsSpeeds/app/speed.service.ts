@@ -10,7 +10,6 @@ export class SpeedService {
     private heroesUrl = 'api/speed';  // URL to web API
 
     constructor(private http: Http) {
-
     }
 
     getSpeeds() {

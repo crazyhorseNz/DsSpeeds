@@ -11,7 +11,6 @@ import { Location } from '@angular/common';
 @Injectable()
 export class SpeedDetailComponent implements OnInit{
     constructor(private route: ActivatedRoute, private location: Location) { 
-        console.log('YEs!');
     }
 
     speed: Object;

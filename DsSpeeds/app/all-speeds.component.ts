@@ -25,9 +25,9 @@ export class AllSpeedsComponent implements OnInit{
     ngOnInit() {
         this.speedService.getSpeeds()
             .subscribe(speeds => {
-                console.log(speeds);
+                //.log(speeds);
                 this.speeds = speeds;
-                console.log(this.speeds);
+                //console.log(this.speeds);
             },
             error => console.log('ERROR: ' + error));
 
