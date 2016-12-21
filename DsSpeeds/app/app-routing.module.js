@@ -10,13 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var speedlist_component_1 = require("./speedlist.component");
-var allspeeds_component_1 = require("./allspeeds.component");
-var routes = [
-    { path: '', redirectTo: '/allspeeds', pathMatch: 'full' },
-    { path: 'speedlist', component: speedlist_component_1.SpeedListComponent },
-    { path: 'allspeeds', component: allspeeds_component_1.AllSpeedsComponent },
-];
+var routes = [];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
