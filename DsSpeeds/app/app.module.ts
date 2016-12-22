@@ -10,6 +10,7 @@ import { SpeedService } from './speed.service';
 import { SpeedListComponent } from './speedlist.component';
 import { SpeedDetailComponent } from './speed-detail.component';
 import { AllSpeedsComponent } from './all-speeds.component';
+import { SiteSpeedsComponent } from './site-speeds.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { AllSpeedsComponent } from './all-speeds.component';
         AppComponent,
         SpeedListComponent, 
         SpeedDetailComponent,
-        AllSpeedsComponent
+        AllSpeedsComponent,
+        SiteSpeedsComponent
     ],
     bootstrap: [AppComponent],
     providers: [SpeedService]

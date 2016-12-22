@@ -1,0 +1,25 @@
+﻿
+<div *ngIf="speed" class="dl-horizontal">
+    <dl>
+        <dt>Date</dt>
+        <dd>{{speed.date | date}}</dd>
+
+        <dt>Speed (MPH)</dt>
+        <dd>{{speed.speedInMilesPerHour}}</dd>
+
+        <dt>Aircraft</dt>
+        <dd>{{speed.aircraftName}}</dd>
+
+        <dt>Pilot</dt>
+        <dd>{{speed.pilotName}}</dd>
+
+        <dt>Site</dt>
+        <dd>{{speed.siteName}}</dd>
+
+        <dt>Location</dt>
+        <dd>{{speed.siteLocation}}</dd>
+
+        <dt>Witness</dt>
+        <dd>{{speed.witnessName}}</dd>
+    </dl>
+</div>

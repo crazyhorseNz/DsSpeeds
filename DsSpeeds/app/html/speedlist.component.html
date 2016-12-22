@@ -13,10 +13,10 @@
     <tbody>
     <tr *ngFor="let speed of speeds">
         <td>{{speed.date | date}}</td>
-        <td>{{speed.speedInMilesPerHour}}</td>
+        <td><a [routerLink]="['/detail', speed.id]">{{speed.speedInMilesPerHour}}</a></td>
         <td>{{speed.aircraftName}}</td>
         <td>{{speed.pilotName}}</td>
-        <td>{{speed.siteName}}</td>
+        <td><a [routerLink]="['/site/', speed.siteId]">{{speed.siteName}}</a></td>
         <td>{{speed.siteLocation}}</td>
     </tr>
     </tbody>

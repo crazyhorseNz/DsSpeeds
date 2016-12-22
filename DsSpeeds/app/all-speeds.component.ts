@@ -7,12 +7,7 @@ import { SpeedService } from './speed.service';
 @Component({
     moduleId: module.id,
     selector: 'all-speeds',
-    template: `
-    <h2>All Speeds</h2>
-    <div>
-        <speedlist [speeds]="speeds">loading...</speedlist>
-    </div>
-    `
+    templateUrl: './html/all-speeds.component.html'
 })
 
 @Injectable()
@@ -24,13 +19,8 @@ export class AllSpeedsComponent implements OnInit{
 
     ngOnInit() {
         this.speedService.getSpeeds()
-            .subscribe(speeds => {
-                //.log(speeds);
-                this.speeds = speeds;
-                //console.log(this.speeds);
-            },
-            error => console.log('ERROR: ' + error));
-
+            .subscribe(
+                speeds => this.speeds = speeds,
+                error => console.log('ERROR: ' + error));
     }
-
 }

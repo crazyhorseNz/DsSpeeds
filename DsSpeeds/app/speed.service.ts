@@ -7,13 +7,21 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class SpeedService {
 
-    private heroesUrl = 'api/speed';  // URL to web API
-
     constructor(private http: Http) {
     }
 
     getSpeeds() {
-        return this.http.get(this.heroesUrl)
+        return this.http.get('api/speed/')
+            .map((res: Response) => res.json());
+    }
+
+    getSite(id: string) {
+        return this.http.get('api/site/' + id)
+            .map((res: Response) => res.json());
+    }
+
+    getSpeed(id: string) {
+        return this.http.get('api/speed/' + id)
             .map((res: Response) => res.json());
     }
 

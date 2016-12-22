@@ -1,0 +1,8 @@
+﻿
+
+<div *ngIf="site">
+    <h2>{{site.siteName}} - {{site.location}}, {{site.countryName}}</h2>
+    <div>
+        <speedlist [speeds]="site.allVerifiedSpeeds">loading...</speedlist>
+    </div>
+</div>
