@@ -24,7 +24,7 @@ namespace Data
             {
                 return store =>
                 {
-                    store.Connection("host=localhost;database=dsspeeds;password=Password1.;username=dsspeedsuser");
+                    store.Connection("host=localhost;database=dsspeeds;password=Password1;username=dsspeedsuser");
                     store.AutoCreateSchemaObjects = AutoCreate.All;
 
                     // Register Events
